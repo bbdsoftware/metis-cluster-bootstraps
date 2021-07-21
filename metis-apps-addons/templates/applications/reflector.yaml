@@ -1,0 +1,86 @@
+{{ if .Values.spec.reflector.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: reflector
+  namespace: argo-cd
+spec:
+  destination:
+    namespace:  kube-addons
+    server: {{ .Values.spec.destination.server }}
+  project: {{ .Values.spec.destination.project }}
+  source:
+    chart: reflector
+    repoURL: https://emberstack.github.io/helm-charts
+    targetRevision:  4.1.12
+    helm:
+      values: |
+        replicaCount: 1
+        image:
+          repository: emberstack/kubernetes-reflector
+          tag: ""
+          pullPolicy: ""
+
+        imagePullSecrets: []
+        nameOverride: ""
+        fullnameOverride: ""
+
+
+        configuration:
+          logging:
+            minimumLevel: Information
+
+        serviceAccount:
+          # Specifies whether a service account should be created
+          create: true
+          # Annotations to add to the service account
+          annotations: {}
+          # The name of the service account to use.
+          # If not set and create is true, a name is generated using the fullname template
+          name:
+
+        rbac:
+          enabled: true
+
+        podSecurityContext:
+          fsGroup: 2000
+
+        securityContext:
+          capabilities:
+            drop:
+              - ALL
+          readOnlyRootFilesystem: false
+          runAsNonRoot: true
+          runAsUser: 1000
+
+        livenessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 10
+
+        resources:
+          # We usually recommend not to specify default resources and to leave this as a conscious
+          # choice for the user. This also increases chances charts run on environments with little
+          # resources, such as Minikube. If you do want to specify resources, uncomment the following
+          # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+          limits:
+            # cpu: 100m
+            memory: 256Mi
+          requests:
+            # cpu: 100m
+            memory: 128Mi
+
+        nodeSelector:
+          role: add-ons-platform
+
+        tolerations:
+          - key: "addOnsPlatform"
+            operator: "Exists"
+            effect: "NoSchedule"
+
+        affinity: {}
+
+
+{{- end }}

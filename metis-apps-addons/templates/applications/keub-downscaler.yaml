@@ -1,0 +1,126 @@
+{{ if .Values.spec.kubedownscaler.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-downscaler{{ .Values.spec.destination.clustername }}
+  namespace: argocd
+spec:
+  destination:
+    namespace: kube-addons
+    server: {{ .Values.spec.destination.server }}
+  project: {{ .Values.spec.destination.project }}
+  source:
+    chart: kube-downscaler
+    repoURL: https://hahow-helm-charts.storage.googleapis.com/
+    targetRevision: 0.1.2
+    helm:
+      values: |
+        replicaCount: 1
+        image:
+          repository: tools.standardbank.co.za:8092/hjacobs/kube-downscaler
+          pullPolicy: IfNotPresent
+
+        imagePullSecrets: []
+        nameOverride: ""
+        fullnameOverride: ""
+
+        serviceAccount:
+          create: true
+          annotations: {}
+          name:
+
+        podSecurityContext: {}
+
+        securityContext: {}
+
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100Mi
+          limits:
+            cpu: 10m
+            memory: 100Mi
+
+        nodeSelector: {}
+
+        tolerations: []
+
+        affinity: {}
+
+        rbac:
+          create: true
+
+        ## Dry run mode: do not change anything, just print what would be done
+        dryRun: false
+
+        ## Debug mode: print more information
+        debug: false
+
+        ## Run loop only once and exit
+        once: false
+
+        ## Loop interval (default: 30s)
+        interval: 30
+
+        namespace:
+          ## Restrict the downscaler to work only in a single namespace
+          ## (default: all namespaces). This is mainly useful for deployment scenarios
+          ## where the deployer of kube-downscaler only has access to a given namespace
+          ## (instead of cluster access).
+          activeIn:
+          ## Exclude namespaces from downscaling (default: kube-system)
+          inactiveIn:
+          # - kube-system
+
+        ## Downscale resources of this kind. (default: deployments)
+        includeResources:
+        # - deployments
+        # - statefulsets
+        # - cronjobs
+        # - horizontalpodautoscalers
+
+        ## Grace period in seconds for new deployments before scaling them down
+        ## (default: 15min). The grace period counts from time of creation of the
+        ## deployment, i.e. updated deployments will immediately be scaled down
+        ## regardless of the grace period.
+        gracePeriod: # 900
+
+        ## Alternative logic to scale up only in given period of time (default: never),
+        ## can also be configured via the annotation downscaler/upscale-period on each
+        ## deployment.
+        upscalePeriod: # never
+
+        ## Alternative logic to scale down only in given period of time
+        ## (default: never), can also be configured via the annotation
+        ## downscaler/downscale-period on each deployment
+        downscalePeriod: # never
+
+        ## Default time range to scale up for (default: always), can also be
+        ## configured via the annotation downscaler/uptime on each deployment.
+        defaultUptime: # always
+
+        ## Default time range to scale down for (default: never), can also be
+        ## configured via the annotation downscaler/downtime on each deployment.
+        defaultDowntime: # never
+
+        ## Exclude specific deployments/statefulsets/cronjobs from downscaling
+        ## (default:kube-downscaler, downscaler). Despite its name, this option will
+        ## match the name of any included resource type (Deployment, StatefulSet,
+        ## CronJob, ..).
+        excludeDeployments:
+        # - kube-downscaler
+        # - downscaler
+
+        ## Default value of replicas to downscale to, the annotation
+        ## downscaler/downtime-replicas takes precedence over this value.
+        downtimeReplicas: # 0
+
+        ## Optional: name of the annotation that would be used instead of the creation
+        ## timestamp of the resource. This option should be used if you want the
+        ## resources to be kept scaled up during a grace period (--grace-period) after
+        ## a deployment. The format of the annotation's timestamp value must be exactly
+        ## the same as for Kubernetes' creationTimestamp: %Y-%m-%dT%H:%M:%SZ.
+        ## Recommended: set this annotation by your deployment tooling automatically.
+        deploymentTimeAnnotation:
+
+{{- end }}

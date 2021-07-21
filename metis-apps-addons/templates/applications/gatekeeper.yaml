@@ -1,0 +1,103 @@
+{{ if .Values.spec.gatekeeper.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gatekeeper
+  namespace: argo-cd
+spec:
+  ignoreDifferences:
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      jsonPointers:
+        - /webhooks
+  destination:
+    namespace:  kube-addons
+    server: {{ .Values.spec.destination.server }}
+  project: {{ .Values.spec.destination.server }}
+  source:
+    chart: gatekeeper
+    repoURL:  https://open-policy-agent.github.io/gatekeeper/charts
+    targetRevision:  3.4.0
+    helm:
+      values:  |
+        replicas: 2
+        auditInterval: 60
+        constraintViolationsLimit: 20
+        auditFromCache: false
+        disableValidatingWebhook: false
+        validatingWebhookTimeoutSeconds: 3
+        enableDeleteOperations: false
+        experimentalEnableMutation: false
+        auditChunkSize: 0
+        logLevel: INFO
+        logDenies: false
+        emitAdmissionEvents: false
+        emitAuditEvents: false
+        postInstall:
+          labelNamespace:
+            enabled: true
+            image:
+              repository: line/kubectl-kustomize
+              tag: 1.20.4-4.0.5
+              pullPolicy: IfNotPresent
+              pullSecrets: []
+        image:
+          repository: openpolicyagent/gatekeeper
+          release: v3.4.0
+          pullPolicy: IfNotPresent
+          pullSecrets: []
+        podAnnotations:
+          { container.seccomp.security.alpha.kubernetes.io/manager: runtime/default }
+        podLabels: {}
+        secretAnnotations: {}
+        controllerManager:
+          hostNetwork: false
+          priorityClassName: system-cluster-critical
+          affinity:
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - podAffinityTerm:
+                    labelSelector:
+                      matchExpressions:
+                        - key: gatekeeper.sh/operation
+                          operator: In
+                          values:
+                            - webhook
+                    topologyKey: kubernetes.io/hostname
+                  weight: 100
+          nodeSelector:
+            role: add-ons-platform
+          tolerations:
+            - key: "addOnsPlatform"
+              operator: "Exists"
+              effect: "NoSchedule"
+          resources:
+            limits:
+              cpu: 200m
+              memory: 512Mi
+            requests:
+              cpu: 50m
+              memory: 256Mi
+        audit:
+          hostNetwork: false
+          priorityClassName: system-cluster-critical
+          affinity: {}
+          nodeSelector:
+            role: add-ons-platform
+
+          tolerations:
+            - key: "addOnsPlatform"
+              operator: "Exists"
+              effect: "NoSchedule"
+          resources:
+            limits:
+              cpu: 200m
+              memory: 512Mi
+            requests:
+              cpu: 50m
+              memory: 256Mi
+        pdb:
+          controllerManager:
+            minAvailable: 0
+
+{{- end }}

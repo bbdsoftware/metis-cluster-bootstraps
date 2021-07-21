@@ -1,0 +1,99 @@
+{{ if .Values.spec.kubedescheduler.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-descheduler{{ .Values.spec.destination.clustername }}
+  namespace: argo-cd
+spec:
+  destination:
+    namespace: kube-addons
+    server: {{ .Values.spec.destination.server }}
+  project: {{ .Values.spec.destination.project }}
+  source:
+    chart: descheduler
+    repoURL:   https://kubernetes-sigs.github.io/descheduler/
+    targetRevision: 1.0.2
+    helm:
+      values: |
+        # Default values for descheduler.
+        # This is a YAML-formatted file.
+        # Declare variables to be passed into your templates.
+
+        cronJobApiVersion: "batch/v1beta1"
+        image:
+          repository: k8s.gcr.io/descheduler/descheduler
+          # Overrides the image tag whose default is the chart version
+          tag: ""
+          pullPolicy: IfNotPresent
+
+        imagePullSecrets: [ ]
+
+        resources:
+          requests:
+            cpu: 10m
+            memory: 256Mi
+          # limits:
+          #   cpu: 100m
+          #   memory: 128Mi
+
+        nameOverride: ""
+        fullnameOverride: ""
+
+        schedule: "*/2 * * * *"
+        #startingDeadlineSeconds: 200
+        #successfulJobsHistoryLimit: 1
+        #failedJobsHistoryLimit: 1
+
+        cmdOptions:
+          v: 3
+          # evict-local-storage-pods:
+          # max-pods-to-evict-per-node: 10
+          # node-selector: "key1=value1,key2=value2"
+
+        deschedulerPolicy:
+          strategies:
+            RemoveDuplicates:
+              enabled: false
+            RemovePodsViolatingNodeTaints:
+              enabled: true
+            RemovePodsViolatingNodeAffinity:
+              enabled: true
+              params:
+                nodeAffinityType:
+                  - requiredDuringSchedulingIgnoredDuringExecution
+            RemovePodsViolatingInterPodAntiAffinity:
+              enabled: true
+            LowNodeUtilization:
+              enabled: true
+              params:
+                nodeResourceUtilizationThresholds:
+                  thresholds:
+                    cpu: 20
+                    memory: 20
+                    pods: 20
+                  targetThresholds:
+                    cpu: 50
+                    memory: 50
+                    pods: 50
+
+        priorityClassName: system-cluster-critical
+
+        nodeSelector: { }
+        #  foo: bar
+
+        rbac:
+          # Specifies whether RBAC resources should be created
+          create: true
+
+        podSecurityPolicy:
+          # Specifies whether PodSecurityPolicy should be created.
+          create: true
+
+        serviceAccount:
+          # Specifies whether a ServiceAccount should be created
+          create: true
+          # The name of the ServiceAccount to use.
+          # If not set and create is true, a name is generated using the fullname template
+          name:
+
+{{- end }}

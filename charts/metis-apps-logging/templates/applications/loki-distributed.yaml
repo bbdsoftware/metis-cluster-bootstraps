@@ -27,7 +27,7 @@ spec:
   project: {{ .Values.spec.destination.project }}
   source:
     chart: loki-distributed
-    repoURL:  https://grafana.github.io/loki/charts
+    repoURL:  https://grafana.github.io/helm-charts
     targetRevision: 0.35.0
     helm:
       values: |

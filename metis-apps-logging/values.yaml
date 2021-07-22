@@ -6,5 +6,5 @@ spec:
         clustername: test
         server: https://kubernetes.default.svc
         name: test
-        project: test
+        project: kube-addons-logging
         syncPolicy:

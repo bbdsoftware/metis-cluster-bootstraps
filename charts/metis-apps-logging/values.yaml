@@ -3,6 +3,8 @@ spec:
         enabled: true
     loki:
         enabled: true
+    lokiDistributed:
+        enabled: true
     destination:
         clustername: test
         server: https://kubernetes.default.svc

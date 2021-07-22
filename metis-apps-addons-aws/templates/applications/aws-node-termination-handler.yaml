@@ -32,7 +32,7 @@ spec:
     targetRevision:  0.15.1
     helm:
       values: |
-        aws-node-termination-handler:
+
         securityContext:
           runAsUserID: 1000
           runAsGroupID: 1000

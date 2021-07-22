@@ -27,24 +27,15 @@ spec:
     server: {{ .Values.spec.destination.server }}
   project: {{ .Values.spec.destination.project }}
   source:
-    path: {{ .Values.spec.appsAddonComonPath }}aws-node-termination-handler
-    repoURL: {{ .Values.spec.source.repoURL }}
-    targetRevision: {{ .Values.spec.source.targetRevision }}
+    chart: aws-node-termination-handler
+    repoURL: https://aws.github.io/eks-charts
+    targetRevision:  0.15.1
     helm:
       values: |
         aws-node-termination-handler:
-        image:
-          repository: NOTPROVIDED
-          tag: NOTPROVIDED
-          pullPolicy: IfNotPresent
-          pullSecrets: []
-
         securityContext:
           runAsUserID: 1000
           runAsGroupID: 1000
-
-        nameOverride: "aws-node-termination-handler"
-        fullnameOverride: "aws-node-termination-handler"
 
         priorityClassName: system-node-critical
 

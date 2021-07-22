@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: metis-kube-adddons
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
+        revision: HEAD
+        directories:
+          - path: "metis-apps-addons*"
+  template:
+    # This is a template Argo CD Application, but with support for parameter substitution.
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: test
+      source:
+        repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: kube-addons

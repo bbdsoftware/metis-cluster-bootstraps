@@ -36,6 +36,10 @@ spec:
         repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
         targetRevision: main
         path: '{{path}}'
+        helm:
+          parameters:
+            - name: clusterName
+              value: testappset
       destination:
         server: https://kubernetes.default.svc
         namespace: kube-addons

@@ -1,10 +1,11 @@
 spec:
-    appName:
+    fuentdcloudwatch:
         enabled: true
-
+    loki:
+        enabled: true
     destination:
         clustername: test
         server: https://kubernetes.default.svc
         name: test
         project: kube-addons-logging
-        syncPolicy:
+

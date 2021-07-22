@@ -25,13 +25,10 @@ spec:
         factor: 2 # a factor to multiply the base duration after each failed retry
         maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
   destination:
-    namespace: kube-addons
+    namespace: {{ .Values.spec.destination.project }}
     server: {{ .Values.spec.destination.server }}
-  project: {{ .Values.spec.preprodInfraProject }}
-  {{- with .Values.spec.syncPolicy }}
-  syncPolicy:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
+  project: {{ .Values.spec.destination.project }}
+
   source:
     path: {{ .Values.spec.appsAddonComonPath }}kube-cleanup
     repoURL: {{ .Values.spec.source.repoURL }}

@@ -27,7 +27,7 @@ spec:
       jsonPointers:
         - /webhooks
   destination:
-    namespace:  kube-addons
+    namespace:  {{ .Values.spec.destination.project }}
     server: {{ .Values.spec.destination.server }}
   project: {{ .Values.spec.destination.server }}
   source:

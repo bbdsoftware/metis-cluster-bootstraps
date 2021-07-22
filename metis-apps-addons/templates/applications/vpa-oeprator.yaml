@@ -9,9 +9,9 @@ metadata:
   {{ toYaml .Values.spec.additionalMetadata | nindent 2}}
 spec:
   destination:
-    namespace:  kube-addons
+    namespace:  {{ .Values.spec.destination.project }}
     server: {{ .Values.spec.destination.server }}
-  project: {{ .Values.spec.preprodInfraProject }}
+  project: {{ .Values.spec.destination.project }}
   {{- with .Values.spec.syncPolicy }}
   syncPolicy:
     {{- toYaml . | nindent 4 }}

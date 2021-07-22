@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kube-descheduler{{ .Values.spec.destination.clustername }}
-  namespace: argo-cd
+  namespace: argocd
 spec:
   syncPolicy:
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
@@ -22,7 +22,7 @@ spec:
         factor: 2 # a factor to multiply the base duration after each failed retry
         maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
   destination:
-    namespace: kube-addons
+    namespace: {{ .Values.spec.destination.project }}
     server: {{ .Values.spec.destination.server }}
   project: {{ .Values.spec.destination.project }}
   source:

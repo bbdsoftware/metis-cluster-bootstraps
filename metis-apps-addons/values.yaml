@@ -1,24 +1,20 @@
 spec:
     vpa:
-        enabled: false
-    reloader:
-        enabled: false
-    reflector:
-        enabled: false
-    kubernetesExternalSecrets:
-        enabled: false
-    kubecleanup:
-        enabled: false
-    kubedownscaler:
-        enabled: false
-    kubedescheduler:
-        enabled: false
-    gatekeeper:
-        enabled: false
-    awsNodeTerminationHandler:
         enabled: true
-    albIngressController:
-        enabled : true
+    reloader:
+        enabled: true
+    reflector:
+        enabled: true
+    kubernetesExternalSecrets:
+        enabled: true
+    kubecleanup:
+        enabled: true
+    kubedownscaler:
+        enabled: true
+    kubedescheduler:
+        enabled: true
+    gatekeeper:
+        enabled: true
     destination:
         clustername: test
         server: https://kubernetes.default.svc

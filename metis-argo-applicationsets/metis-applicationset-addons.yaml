@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
         revision: HEAD
         directories:
-          - path: "metis-apps-addons*"
+          - path: "charts/metis-apps-addons*"
   template:
     # This is a template Argo CD Application, but with support for parameter substitution.
     metadata:

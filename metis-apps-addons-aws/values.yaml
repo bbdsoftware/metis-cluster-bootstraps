@@ -1,0 +1,11 @@
+spec:
+    awsNodeTerminationHandler:
+        enabled: true
+    albIngressController:
+        enabled : true
+    destination:
+        clustername: test
+        server: https://kubernetes.default.svc
+        name: test
+        project: test
+        syncPolicy:

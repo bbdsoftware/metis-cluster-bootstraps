@@ -1,0 +1,183 @@
+{{ if .Values.spec.awsNodeTerminationHandler.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-node-termination-handler{{ .Values.spec.destination.clustername }}
+  namespace: argo-cd
+spec:
+  syncPolicy:
+    automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
+      prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
+      selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
+      allowEmpty: false # Allows deleting all application resources during automatic syncing ( false by default ).
+    syncOptions:     # Sync options which modifies sync behavior
+      - Validate=false # disables resource validation (equivalent to 'kubectl apply --validate=false') ( true by default ).
+      - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
+      - PrunePropagationPolicy=foreground # Supported policies are background, foreground and orphan.
+      - PruneLast=true # Allow the ability for resource pruning to happen as a final, implicit wave of a sync operation
+    # The retry feature is available since v1.7
+    retry:
+      limit: 5 # number of failed sync attempt retries; unlimited number of attempts if less than 0
+      backoff:
+        duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
+        factor: 2 # a factor to multiply the base duration after each failed retry
+        maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
+  destination:
+    namespace: kube-addons
+    server: {{ .Values.spec.destination.server }}
+  project: {{ .Values.spec.destination.project }}
+  source:
+    path: {{ .Values.spec.appsAddonComonPath }}aws-node-termination-handler
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+    helm:
+      values: |
+        aws-node-termination-handler:
+        image:
+          repository: NOTPROVIDED
+          tag: NOTPROVIDED
+          pullPolicy: IfNotPresent
+          pullSecrets: []
+
+        securityContext:
+          runAsUserID: 1000
+          runAsGroupID: 1000
+
+        nameOverride: "aws-node-termination-handler"
+        fullnameOverride: "aws-node-termination-handler"
+
+        priorityClassName: system-node-critical
+
+        podAnnotations: {}
+        linuxPodAnnotations: {}
+        windowsPodAnnotations: {}
+
+        podLabels: {}
+        linuxPodLabels: {}
+        windowsPodLabels: {}
+
+        resources:
+          requests:
+            memory: "20Mi"
+            cpu: "10m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+
+        ## enableSpotInterruptionDraining If true, drain nodes when the spot interruption termination notice is received
+        enableSpotInterruptionDraining: true
+
+        ## enableScheduledEventDraining [EXPERIMENTAL] If true, drain nodes before the maintenance window starts for an EC2 instance scheduled event
+        enableScheduledEventDraining: false
+
+        # Total number of times to try making the metadata request before failing.
+        metadataTries: 3
+
+        # Cordon but do not drain nodes upon spot interruption termination notice.
+        cordonOnly: false
+
+        # Taint node upon spot interruption termination notice.
+        taintNode: true
+
+        # Log messages in JSON format.
+        jsonLogging: false
+
+        ## dryRun tells node-termination-handler to only log calls to kubernetes control plane
+        dryRun: false
+
+        # deleteLocalData tells kubectl to continue even if there are pods using
+        # emptyDir (local data that will be deleted when the node is drained).
+        deleteLocalData: true
+
+        # ignoreDaemonSets causes kubectl to skip Daemon Set managed pods.
+        ignoreDaemonSets: true
+
+        # gracePeriod (DEPRECATED - use podTerminationGracePeriod instead) is time in seconds given to each pod to terminate gracefully.
+        # If negative, the default value specified in the pod will be used.
+        podTerminationGracePeriod: 30
+
+        # nodeTerminationGracePeriod specifies the period of time in seconds given to each NODE to terminate gracefully. Node draining will be scheduled based on this value to optimize the amount of compute time, but still safely drain the node before an event.
+        nodeTerminationGracePeriod: 120
+
+        # webhookURL if specified, posts event data to URL upon instance interruption action.
+        # webhookURL: ""
+
+        # Webhook URL will be fetched from the secret store using the given name.
+        # webhookURLSecretName: None
+
+        # webhookProxy if specified, uses this HTTP(S) proxy configuration.
+        # webhookProxy: ""
+
+        # webhookHeaders if specified, replaces the default webhook headers.
+        # webhookHeaders: ""
+
+        # webhookTemplate if specified, replaces the default webhook message template.
+        # webhookTemplate: ""
+
+        # instanceMetadataURL is used to override the default metadata URL (default: http://169.254.169.254:80)
+        # instanceMetadataURL: http://169.254.169.254:80
+
+        # (TESTING USE): Mount path for uptime file
+        procUptimeFile: "/proc/uptime"
+
+        # Create node OS specific daemonset(s). (e.g. "linux", "windows", "linux windows")
+        targetNodeOs: "linux"
+
+        # nodeSelector tells both linux and windows daemonsets where to place the node-termination-handler
+        # pods. By default, this value is empty and every node will receive a pod.
+        nodeSelector:
+          lifecycle: Ec2Spot
+        # linuxNodeSelector tells the linux daemonset where to place the node-termination-handler
+        # pods. By default, this value is empty and every linux node will receive a pod.
+        linuxNodeSelector: {}
+        # windowsNodeSelector tells the windows daemonset where to place the node-termination-handler
+        # pods. By default, this value is empty and every windows node will receive a pod.
+        windowsNodeSelector: {}
+
+        # nodeSelectorTermsOs: kubernetes.io/os
+        # nodeSelectorTermsArch: kubernetes.io/arch
+
+        enablePrometheusServer: false
+        prometheusServerPort: "9092"
+
+        tolerations:
+          - operator: "Exists"
+
+        affinity: {}
+        linuxAffinity: {}
+        windowsAffinity: {}
+
+        serviceAccount:
+          # Specifies whether a service account should be created
+          create: true
+          # The name of the service account to use. If namenot set and create is true,
+          # a name is generated using fullname template
+          name:
+          annotations: {}
+          # eks.amazonaws.com/role-arn: arn:aws:iam::AWS_ACCOUNT_ID:role/IAM_ROLE_NAME
+
+        rbac:
+          # rbac.pspEnabled: `true` if PodSecurityPolicy resources should be created
+          pspEnabled: true
+
+        dnsPolicy: ClusterFirstWithHostNet
+
+        podMonitor:
+          # Specifies whether PodMonitor should be created
+          create: true
+          # The Prometheus scrape interval
+          interval: 30s
+          # The number of scraped samples that will be accepted
+          sampleLimit: 5000
+          # Additional labels to add to the metadata
+          labels:
+            prometheus: monitoring-ql
+
+        # K8s DaemonSet update strategy.
+        updateStrategy:
+          type: RollingUpdate
+          rollingUpdate:
+            maxUnavailable: 1
+        # linuxUpdateStrategy: ""
+        # windowsUpdateStrategy: ""
+{{- end }}

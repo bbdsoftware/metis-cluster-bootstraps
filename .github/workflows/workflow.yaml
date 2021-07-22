@@ -1,4 +1,4 @@
-ame: Lint and Test Charts
+name: Lint and Test Charts
 
 on:  [push, pull_request]
 

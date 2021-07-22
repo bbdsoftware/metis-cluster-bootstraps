@@ -3,6 +3,8 @@ spec:
         enabled: true
     loki:
         enabled: true
+    promtail:
+        enabled: true
     destination:
         clustername: test
         server: https://kubernetes.default.svc

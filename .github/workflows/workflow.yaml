@@ -3,7 +3,7 @@ name: Lint and Test Charts
 on:  [push, pull_request]
 
 jobs:
-  lint-test:d
+  lint-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -45,4 +45,3 @@ jobs:
 
       - name: Run chart-testing (install)
         run: ct install --config ct.yaml
-  {"mode":"full","isActive":false}

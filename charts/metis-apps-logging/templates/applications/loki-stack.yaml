@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: loki-stack-{{ .Values.spec.destination.clustername}}
+  name: loki-stack-{{.Values.spec.destination.clustername}}
   namespace: argocd
 spec:
   syncPolicy:
@@ -97,3 +97,4 @@ spec:
         prometheus:
           enabled: false
 {{- end}}
+

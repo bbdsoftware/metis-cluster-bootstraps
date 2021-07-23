@@ -1,0 +1,1 @@
+docker run -it --rm --name ct --volume $(pwd):/data quay.io/helmpack/chart-testing:latest sh -c "ct lint --config /data/ct-local.yaml --all --debug ".

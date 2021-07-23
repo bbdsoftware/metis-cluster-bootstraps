@@ -3,6 +3,8 @@ spec:
         enabled: true
     loki:
         enabled: true
+    promtail:
+        enabled: false
     loggingOperator:
         enabled: false
     destination:

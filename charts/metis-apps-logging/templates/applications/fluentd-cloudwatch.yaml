@@ -1,0 +1,251 @@
+{{ if .Values.spec.fuentdcloudwatch.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluentd-cloudwatch-{{.Values.spec.destination.clustername}}
+  namespace: argocd
+spec:
+  syncPolicy:
+    automated:
+      prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
+      selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
+      allowEmpty: false # Allows deleting all application resources during automatic syncing ( false by default ).
+    syncOptions:     # Sync options which modifies sync behavior
+      - Validate=false # disables resource validation (equivalent to 'kubectl apply --validate=false') ( true by default ).
+      - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
+      - PrunePropagationPolicy=foreground # Supported policies are background, foreground and orphan.
+      - PruneLast=true # Allow the ability for resource pruning to happen as a final, implicit wave of a sync operation
+    retry:
+      limit: 5 # number of failed sync attempt retries; unlimited number of attempts if less than 0
+      backoff:
+        duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
+        factor: 2 # a factor to multiply the base duration after each failed retry
+        maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
+  destination:
+    namespace: {{.Values.spec.destination.project}}
+    server: {{.Values.spec.destination.server}}
+  project: {{.Values.spec.destination.project}}
+  source:
+    chart: fluentd-cloudwatch
+    repoURL: https://charts.helm.sh/incubator
+    targetRevision: 0.13.1
+    helm:
+      values: |
+        resources:
+
+          limits:
+            memory: 400Mi
+          requests:
+            cpu: 250m
+            memory: 300Mi
+
+        # hostNetwork: false
+
+        nodeSelector: {}
+        # kubernetes.io/role: node
+        # Ref: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#affinity-v1-core
+        # Expects input structure as per specification for example:
+        #   affinity:
+        #     nodeAffinity:
+        #      requiredDuringSchedulingIgnoredDuringExecution:
+        #        nodeSelectorTerms:
+        #        - matchExpressions:
+        #          - key: foo.bar.com/role
+        #            operator: In
+        #            values:
+        #            - master
+        affinity: {}
+
+        volumeMounts: []
+        #   - name: runlogjournal
+        #     mountPath: /run/log/journal
+        #     readOnly: true
+
+        volumes: []
+        #   - name: runlogjournal
+        #     hostPath:
+        #       path: /run/log/journal
+
+        ## Add tolerations if specified
+        tolerations:
+          - key: "addOnsPlatform"
+            operator: "Exists"
+            effect: "NoSchedule"
+          - key: "addOnsMonitoring"
+            operator: "Exists"
+            effect: "NoSchedule"
+          - key: "addOnsCi"
+            operator: "Exists"
+            effect: "NoSchedule"
+
+        #   - key: node-role.kubernetes.io/master
+        #     operator: Exists
+        #     effect: NoSchedule
+
+        podSecurityContext: {}
+
+        podAnnotations: {}
+
+        # Pod priority
+        # Sets PriorityClassName if defined.
+        #
+        # priorityClassName: "my-priority-class"
+
+        awsRegion: eu-west-1
+        awsRole:
+        awsAccessKeyId:
+        awsSecretAccessKey:
+        logGroupName:  /eks/preprod/logs
+
+        rbac:
+          ## If true, create and use RBAC resources
+          create: true
+          pspEnabled: false
+
+          ## Ignored if rbac.create is true
+          serviceAccountName: default
+          ## Annotations for the Service Account
+          ##
+          serviceAccountAnnotations:
+            NOTPROVIDED
+        # Add extra environment variables if specified (must be specified as a single line object and be quoted)
+        extraVars: []
+        # - "{ name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }"
+
+        busybox:
+          repository: tools.standardbank.co.za:8092/busybox
+          tag: 1.31.0
+
+        updateStrategy:
+          type: RollingUpdate
+
+        data:
+          fluent.conf: |
+            <match fluent.**>
+              @type null
+            </match>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              path /var/log/containers/*.log
+              pos_file /var/log/fluentd-containers.log.pos
+              time_format %Y-%m-%dT%H:%M:%S.%NZ
+              tag kubernetes.*
+              format json
+              read_from_head true
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format /^(?<time>[^ ]* [^ ,]*)[^\[]*\[[^\]]*\]\[(?<severity>[^ \]]*) *\] (?<message>.*)$/
+              time_format %Y-%m-%d %H:%M:%S
+              path /var/log/salt/minion
+              pos_file /var/log/fluentd-salt.pos
+              tag salt
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format syslog
+              path /var/log/startupscript.log
+              pos_file /var/log/fluentd-startupscript.log.pos
+              tag startupscript
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format /^time="(?<time>[^)]*)" level=(?<severity>[^ ]*) msg="(?<message>[^"]*)"( err="(?<error>[^"]*)")?( statusCode=($<status_code>\d+))?/
+              path /var/log/docker.log
+              pos_file /var/log/fluentd-docker.log.pos
+              tag docker
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format none
+              path /var/log/etcd.log
+              pos_file /var/log/fluentd-etcd.log.pos
+              tag etcd
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format kubernetes
+              multiline_flush_interval 5s
+              path /var/log/kubelet.log
+              pos_file /var/log/fluentd-kubelet.log.pos
+              tag kubelet
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format kubernetes
+              multiline_flush_interval 5s
+              path /var/log/kube-proxy.log
+              pos_file /var/log/fluentd-kube-proxy.log.pos
+              tag kube-proxy
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format kubernetes
+              multiline_flush_interval 5s
+              path /var/log/kube-apiserver.log
+              pos_file /var/log/fluentd-kube-apiserver.log.pos
+              tag kube-apiserver
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format kubernetes
+              multiline_flush_interval 5s
+              path /var/log/kube-controller-manager.log
+              pos_file /var/log/fluentd-kube-controller-manager.log.pos
+              tag kube-controller-manager
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format kubernetes
+              multiline_flush_interval 5s
+              path /var/log/kube-scheduler.log
+              pos_file /var/log/fluentd-kube-scheduler.log.pos
+              tag kube-scheduler
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format kubernetes
+              multiline_flush_interval 5s
+              path /var/log/rescheduler.log
+              pos_file /var/log/fluentd-rescheduler.log.pos
+              tag rescheduler
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format kubernetes
+              multiline_flush_interval 5s
+              path /var/log/glbc.log
+              pos_file /var/log/fluentd-glbc.log.pos
+              tag glbc
+            </source>
+            <source>
+              @type tail
+              enable_stat_watcher false
+              format kubernetes
+              multiline_flush_interval 5s
+              path /var/log/cluster-autoscaler.log
+              pos_file /var/log/fluentd-cluster-autoscaler.log.pos
+              tag cluster-autoscaler
+            </source>
+            <filter kubernetes.**>
+              @type kubernetes_metadata
+            </filter>
+            <match **>
+              @type cloudwatch_logs
+              log_group_name "#{ENV['LOG_GROUP_NAME']}"
+              auto_create_stream true
+              use_tag_as_stream true
+            </match>
+{{- end}}

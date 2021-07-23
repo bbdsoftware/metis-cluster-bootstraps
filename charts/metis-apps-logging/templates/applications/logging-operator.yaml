@@ -1,8 +1,8 @@
-{{ if .Values.spec.vpa.enabled -}}
+{{ if .Values.spec.loggingOperator.enabled -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vpa-operator-{{.Values.spec.destination.clustername}}
+  name: logging-operator-{{ .Values.spec.destination.clustername }}
   namespace: argocd
 spec:
   syncPolicy:
@@ -22,11 +22,11 @@ spec:
         factor: 2 # a factor to multiply the base duration after each failed retry
         maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
   destination:
-    namespace: {{.Values.spec.destination.project}}
-    server: {{.Values.spec.destination.server}}
-  project: {{.Values.spec.destination.project}}
+    namespace: {{ .Values.spec.destination.project }}
+    server: {{ .Values.spec.destination.server }}
+  project: {{ .Values.spec.destination.project }}
   source:
-    path: vpa
-    repoURL: https://charts.fairwinds.com/stable
-    targetRevision: 0.2.2
+    chart: logging-operator
+    repoURL:  https://kubernetes-charts.banzaicloud.com
+    targetRevision: 3.13.0
 {{- end }}

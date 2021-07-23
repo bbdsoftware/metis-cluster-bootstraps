@@ -1,8 +1,8 @@
-{{ if .Values.spec.vpa.enabled -}}
+{{ if .Values.spec.promtail.enabled -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vpa-operator-{{.Values.spec.destination.clustername}}
+  name: promtail-{{ .Values.spec.destination.clustername }}
   namespace: argocd
 spec:
   syncPolicy:
@@ -22,11 +22,28 @@ spec:
         factor: 2 # a factor to multiply the base duration after each failed retry
         maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
   destination:
-    namespace: {{.Values.spec.destination.project}}
-    server: {{.Values.spec.destination.server}}
-  project: {{.Values.spec.destination.project}}
+    namespace: {{ .Values.spec.destination.project }}
+    server: {{ .Values.spec.destination.server }}
+  project: {{ .Values.spec.destination.project }}
   source:
-    path: vpa
-    repoURL: https://charts.fairwinds.com/stable
-    targetRevision: 0.2.2
+    chart: promtail
+    repoURL:  https://grafana.github.io/helm-charts
+    targetRevision: 3.6.0
+    helm:
+      values: |
+        serviceMonitor:
+          enabled: true
+        tolerations:
+          - key: "addOnsPlatform"
+            operator: "Exists"
+            effect: "NoSchedule"
+          - key: "addOnsMonitoring"
+            operator: "Exists"
+            effect: "NoSchedule"
+          - key: "node-role.kubernetes.io/master"
+            operator: "Exists"
+            effect: "NoSchedule"
+          - key: "addOnsCi"
+            operator: "Exists"
+            effect: "NoSchedule"
 {{- end }}

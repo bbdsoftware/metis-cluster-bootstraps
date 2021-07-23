@@ -3,6 +3,8 @@ spec:
         enabled: true
     loki:
         enabled: true
+    promtail:
+        enabled: false
     lokiDistributed:
         enabled: false
     destination:

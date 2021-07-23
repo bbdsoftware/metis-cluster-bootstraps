@@ -7,6 +7,8 @@ spec:
         enabled: false
     lokiDistributed:
         enabled: false
+    loggingOperator:
+        enabled: false
     destination:
         clustername: test
         server: https://kubernetes.default.svc

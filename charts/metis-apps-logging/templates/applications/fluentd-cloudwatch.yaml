@@ -2,11 +2,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fluentd-cloudwatch-{{ .Values.spec.destination.clustername }}
+  name: fluentd-cloudwatch-{{.Values.spec.destination.clustername}}
   namespace: argocd
 spec:
   syncPolicy:
-    automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
+    automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
       selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
       allowEmpty: false # Allows deleting all application resources during automatic syncing ( false by default ).
@@ -22,12 +22,12 @@ spec:
         factor: 2 # a factor to multiply the base duration after each failed retry
         maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
   destination:
-    namespace: {{ .Values.spec.destination.project }}
-    server: {{ .Values.spec.destination.server }}
-  project: {{ .Values.spec.destination.project }}
+    namespace: {{.Values.spec.destination.project}}
+    server: {{.Values.spec.destination.server}}
+  project: {{.Values.spec.destination.project}}
   source:
     chart: fluentd-cloudwatch
-    repoURL:   https://charts.helm.sh/incubator
+    repoURL: https://charts.helm.sh/incubator
     targetRevision: 0.13.1
     helm:
       values: |
@@ -248,4 +248,4 @@ spec:
               auto_create_stream true
               use_tag_as_stream true
             </match>
-{{- end }}
+{{- end}}

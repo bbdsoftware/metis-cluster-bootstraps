@@ -2,7 +2,7 @@ spec:
     awsNodeTerminationHandler:
         enabled: true
     albIngressController:
-        enabled : true
+        enabled: true
     destination:
         clustername: test
         server: https://kubernetes.default.svc

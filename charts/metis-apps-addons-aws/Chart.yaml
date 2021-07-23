@@ -3,3 +3,6 @@ appVersion: "1.0"
 description: A Helm chart child for addon bootstrap
 name: metis-apps-addons-aws
 version: 0.0.1
+maintainers:
+  - name: metisbbd
+    email: metisbbd@bbdsoftware.com

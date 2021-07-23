@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
         revision: HEAD
         directories:
-          - path: "charts/metis-apps-addons*"
+          - path: "charts/metis-apps*"
   template:
     # This is a template Argo CD Application, but with support for parameter substitution.
     metadata:
@@ -31,7 +31,7 @@ spec:
             duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
             factor: 2 # a factor to multiply the base duration after each failed retry
             maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
-      project: test
+      project: metis-bootstrap
       source:
         repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
         targetRevision: main
@@ -42,4 +42,28 @@ spec:
               value: testappset
       destination:
         server: https://kubernetes.default.svc
-        namespace: kube-addons
+        namespace: metis-bootstrap
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: metis-bootstrap
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: metis-bootstrap
+  # Allow manifests to deploy from any Git repos
+  sourceRepos:
+    - '*'
+  # Only permit applications to deploy to the guestbook namespace in the same cluster
+  destinations:
+    - namespace:  metis-bootstrap
+      server: "*"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: metis-bootstrap

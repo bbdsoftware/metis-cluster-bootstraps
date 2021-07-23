@@ -32,9 +32,7 @@ spec:
     helm:
       values: |
         replicaCount: 1
-        image:
-          repository: tools.standardbank.co.za:8092/hjacobs/kube-downscaler
-          pullPolicy: IfNotPresent
+
 
         imagePullSecrets: []
         nameOverride: ""

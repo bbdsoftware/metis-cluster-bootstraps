@@ -5,6 +5,8 @@ spec:
         enabled: true
     promtail:
         enabled: false
+    lokiDistributed:
+        enabled: false
     loggingOperator:
         enabled: false
     destination:

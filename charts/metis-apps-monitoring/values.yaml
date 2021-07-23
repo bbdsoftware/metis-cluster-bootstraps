@@ -1,6 +1,8 @@
 spec:
     appName:
         enabled: true
+    kubePrometheusStack:
+        enabled: false
     destination:
         clustername: test
         server: https://kubernetes.default.svc

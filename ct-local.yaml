@@ -1,9 +1,9 @@
-
 # See https://github.com/helm/chart-testing#configuration
+---
 remote: origin
 target-branch: main
 chart-dirs:
-  - charts
+  - /data/charts
 helm-extra-args: --timeout 600s
 check-version-increment: false
 validate-maintainers: false

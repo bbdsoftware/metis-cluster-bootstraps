@@ -58,6 +58,9 @@ spec:
   namespaceResourceWhitelist:
     - group: '*'
       kind: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
   sourceRepos:
     - '*'
 ---

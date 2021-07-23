@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: loki-stack-{{ .Values.spec.destination.clustername }}
+  name: loki-stack-{{ .Values.spec.destination.clustername}}
   namespace: argocd
 spec:
   syncPolicy:
@@ -22,12 +22,12 @@ spec:
         factor: 2 # a factor to multiply the base duration after each failed retry
         maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
   destination:
-    namespace: {{ .Values.spec.destination.project }}
-    server: {{ .Values.spec.destination.server }}
-  project: {{ .Values.spec.destination.project }}
+    namespace: {{.Values.spec.destination.project}}
+    server: {{.Values.spec.destination.server}}
+  project: {{.Values.spec.destination.project}}
   source:
     chart: loki-stack
-    repoURL:  https://grafana.github.io/loki/charts
+    repoURL: https://grafana.github.io/loki/charts
     targetRevision: 2.1.1
     helm:
       values: |
@@ -96,4 +96,4 @@ spec:
 
         prometheus:
           enabled: false
-{{- end }}
+{{- end}}

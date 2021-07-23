@@ -11,20 +11,23 @@ spec:
   description: {{ .Values.spec.destination.project}}
   # Allow manifests to deploy from any Git repos
   sourceRepos:
-  - '*'
+    - '*'
   # Only permit applications to deploy to the guestbook namespace in the same cluster
   destinations:
-  - namespace: {{ .Values.spec.destination.project}}
-    server: "*"
+    - namespace: {{ .Values.spec.destination.project}}
+      server: "*"
 
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
   # Allow all namespaced-scoped resources to be created, except for ResourceQuota, LimitRange, NetworkPolicy
   namespaceResourceBlacklist:
-  - group: ''
-    kind: ResourceQuota
-  - group: ''
-    kind: LimitRange
-  - group: ''
-    kind: NetworkPolicy
+    - group: ''
+      kind: ResourceQuota
+    - group: ''
+      kind: LimitRange
+    - group: ''
+      kind: NetworkPolicy
 
 {{/*  roles:*/}}
 {{/*  # A role which provides read-only access to all applications in the project*/}}

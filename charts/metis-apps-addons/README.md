@@ -20,3 +20,10 @@ capabilities
 - **RBAC**
 
     This contains the rbac configs for the kube-addons ns
+
+## Development
+### Linting
+To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
+
+
+

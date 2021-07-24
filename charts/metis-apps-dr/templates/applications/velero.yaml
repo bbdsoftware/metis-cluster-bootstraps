@@ -36,9 +36,9 @@ spec:
     targetRevision:  2.23.5
     helm:
       values: |
-				metric:
-					serviceMonitor:
-						enabled: true
-						additionalLabels: {}
+        metric:
+          serviceMonitor:
+            enabled: true
+            additionalLabels: {}
         schedules: {}
 {{- end }}

@@ -1,5 +1,5 @@
 spec:
-    appName:
+    velero:
         enabled: true
     destination:
         clustername: test

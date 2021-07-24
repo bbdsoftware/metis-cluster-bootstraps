@@ -13,4 +13,4 @@ spec:
         clustername: test
         server: https://kubernetes.default.svc
         name: test
-        project: kube-addons-logging
+        project: kube-apps-logging

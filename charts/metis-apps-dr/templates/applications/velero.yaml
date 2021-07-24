@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: velero
+  name: velero-{{ .Values.spec.destination.clustername }}
   namespace: argocd
 spec:
   syncPolicy:

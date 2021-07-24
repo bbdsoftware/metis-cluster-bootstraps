@@ -1,8 +1,8 @@
-{{ if .Values.spec.velero.enabled -}}
+{{ if .Values.spec.vaultInjector.enabled -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: velero-{{ .Values.spec.destination.clustername }}
+  name: vault-injector-{{.Values.spec.destination.clustername}}
   namespace: argocd
 spec:
   syncPolicy:
@@ -21,24 +21,12 @@ spec:
         duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
         factor: 2 # a factor to multiply the base duration after each failed retry
         maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
-  ignoreDifferences:
-    - group: admissionregistration.k8s.io
-      kind: ValidatingWebhookConfiguration
-      jsonPointers:
-        - /webhooks
   destination:
-    namespace:  {{ .Values.spec.destination.project }}
-    server: {{ .Values.spec.destination.server }}
-  project: {{ .Values.spec.destination.project }}
+    namespace: {{.Values.spec.destination.project}}
+    server: {{.Values.spec.destination.server}}
+  project: {{.Values.spec.destination.project}}
   source:
-    chart: vmware-tanzu/velero
-    repoURL: https://vmware-tanzu.github.io/helm-charts
-    targetRevision:  2.23.5
-    helm:
-      values: |
-        metrics:
-          serviceMonitor:
-            enabled: true
-            additionalLabels: {}
-        schedules: {}
+    path: hashicorp/vault
+    repoURL: https://helm.releases.hashicorp.com
+    targetRevision: 0.13.0
 {{- end }}

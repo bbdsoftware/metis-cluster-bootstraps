@@ -29,7 +29,7 @@ spec:
   destination:
     namespace:  {{ .Values.spec.destination.project }}
     server: {{ .Values.spec.destination.server }}
-  project: {{ .Values.spec.destination.server }}
+  project: {{ .Values.spec.destination.project }}
   source:
     chart: gatekeeper
     repoURL:  https://open-policy-agent.github.io/gatekeeper/charts

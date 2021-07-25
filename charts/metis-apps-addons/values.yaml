@@ -1,6 +1,8 @@
 spec:
     vpa:
         enabled: true
+    vaultInjector:
+        enabled: true
     reloader:
         enabled: true
     reflector:

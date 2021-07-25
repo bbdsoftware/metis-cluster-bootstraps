@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kubecleanup
+  name: kubecleanup-{{ .Values.spec.destination.clustername }}
   namespace: argocd
 
 spec:

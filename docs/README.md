@@ -1,10 +1,20 @@
-# metis-cluster-bootstraps
+#Introduction
 Cluster bootstraps for GitOps based on argocd
 
-## Repo Structure
+# PreRequisites
+- K8 clsuter eg [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+- Installed [kubectl](https://kubernetes.io/docs/tasks/tools/) command-line tool
+- Argo + Argo Applicationsets controller   [Install](https://argocd-applicationset.readthedocs.io/en/stable/Geting-Started/)
+
+
+# Repo Structure
 
 This repository is structured into folders containing helm charts.
 Each chart is a collection of argo application crd definitions that related to the installation of toolsets and workloads
+
+##Charts
+These are a collection  of Helm  Charts organised as  "modules". Each chart module is a collection of argo applications. argocd config and namespaces config for various related addons , operator and kubernetes worklaods.
+
 
 ## Chart Structure
 
@@ -22,14 +32,19 @@ Each chart is a collection of argo application crd definitions that related to t
   
   This contains the rbac configs for the kube-addons ns
 
-## Metis Argo Application sets
+# Install
+
+## Application Sets
 
 The metis argo applications sets contain argo applciaiton sets that will , upon application inot the cluser would result int he creation of various
 argo application based on the folder structure and file directory pattern defined in the applicaton set.
 
-Eg the [metis-applicationset-addons.yaml](../metis-argo-applicationsets/metis-applicationset-addons.yaml) bellow would result in 2 applications created in the targeted cluster based on the directories corresponting to charts or manifests
+e.g the [metis-applicationset-addons.yaml](../metis-argo-applicationsets/metis-applicationset-addons.yaml) bellow would result in 2 applications created in the targeted cluster based on the directories corresponting to charts or manifests
 filtered   metis-app-addons*
 
+```
+kubectl apply -f metis-argo-applicationsets/metis-applicationset-addons.yaml
+``` 
 
 
 ```

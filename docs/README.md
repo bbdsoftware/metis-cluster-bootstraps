@@ -27,7 +27,7 @@ Each chart is a collection of argo application crd definitions that related to t
 The metis argo applications sets contain argo applciaiton sets that will , upon application inot the cluser would result int he creation of various
 argo application based on the folder structure and file directory pattern defined in the applicaton set.
 
-Eg the [metis-applicationset-addons.yaml](metis-argo-applicationsets/metis-applicationset-addons.yaml) bellow would result in 2 applications created in the targeted cluster based on the directories corresponting to charts or manifests
+Eg the [metis-applicationset-addons.yaml](../metis-argo-applicationsets/metis-applicationset-addons.yaml) bellow would result in 2 applications created in the targeted cluster based on the directories corresponting to charts or manifests
 filtered   metis-app-addons*
 
 
@@ -72,4 +72,4 @@ spec:
 
 ```
 
-![Drag Racing](docs/argoappsets.png)
+![Drag Racing](argoappsets.png)

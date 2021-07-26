@@ -1,0 +1,13 @@
+spec:
+    crossplane:
+        enabled: true
+    provider:
+        aws:
+            enabled: true
+            version: v0.16.0
+    destination:
+        clustername: test
+        server: https://kubernetes.default.svc
+        name: test
+        project: kube-addons-crossplane
+        syncPolicy:

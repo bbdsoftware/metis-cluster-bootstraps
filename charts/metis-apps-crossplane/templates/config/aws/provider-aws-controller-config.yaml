@@ -1,0 +1,13 @@
+{{ if .Values.spec.provider.aws.enabled -}}
+apiVersion: pkg.crossplane.io/v1alpha1
+kind: ControllerConfig
+metadata:
+  name: provider-aws-controller-config
+  annotations:
+  {{- if .Values.serviceAccount.annotations -}}
+     {{- toYaml .Values.serviceAccount.annotations | nindent 4 }}
+  {{- end }}
+spec:
+  podSecurityContext:
+    fsGroup: 2000
+{{- end }}

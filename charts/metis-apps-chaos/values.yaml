@@ -1,5 +1,7 @@
 spec:
-    appName:
+    powerfulseal:
+        enabled: true
+    chaosMesh:
         enabled: true
     destination:
         clustername: test
@@ -7,3 +9,6 @@ spec:
         name: test
         project: kube-apps-chaos
         syncPolicy:
+    source:
+        repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
+        customChartPath: charts/metis-apps-chaos/custom-charts/

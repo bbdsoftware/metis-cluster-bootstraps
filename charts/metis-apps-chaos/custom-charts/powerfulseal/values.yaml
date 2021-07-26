@@ -1,0 +1,31 @@
+image:
+  repository: bloomberg/powerfulseal
+  tag: 3.1.0
+  pullPolicy: IfNotPresent
+
+name: powerfulseal
+
+config:
+  policy: |-
+    config:
+      runStrategy:
+        minSecondsBetweenRuns: 300
+        maxSecondsBetweenRuns: 301
+    scenarios: []
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1Gi
+  requests:
+    cpu: 750m
+    memory: 500Mi
+
+serviceMonitor:
+  enabled: true
+  additionalLabels:
+    prometheus: monitoring-label
+
+nodeSelector: {}
+
+tolerations: []

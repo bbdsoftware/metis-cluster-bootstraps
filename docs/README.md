@@ -1,4 +1,4 @@
-#Introduction
+# Introduction
 Cluster bootstraps for GitOps based on argocd
 
 # PreRequisites

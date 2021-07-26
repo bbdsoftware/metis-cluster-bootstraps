@@ -5,6 +5,8 @@ spec:
         aws:
             enabled: true
             version: v0.16.0
+            serviceAccount:
+                annotations: {}
     destination:
         clustername: test
         server: https://kubernetes.default.svc

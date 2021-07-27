@@ -14,7 +14,8 @@ Cluster bootstraps for GitOps based on argocd
 # Repo Structure
 
 This repository is structured into folders containing helm charts.
-Each chart is a collection of argo application crd definitions that related to the installation of toolsets and workloads
+Each chart is a collection of argo [application crd](https://argoproj.github.io/argo-cd/operator-manual/declarative-setup/) definitions that related to the installation of toolsets and workloads
+
 
 ##charts-modules
 These are a collection  of Helm  Charts organised as  "modules". Each chart module is a collection of argo applications. argocd config and namespaces config for various related addons , operator and kubernetes worklaods.
@@ -26,10 +27,9 @@ see [Chart Modules](charts/modules/main.md)
 
 ## metis appliciation sets
 
-The metis appset chart contains a collection of argo applications
+The metis appset chart contains a collection of argo [applicationsets](https://argoproj.github.io/argo-cd/user-guide/application-set/)
 
-The metis argo applications sets contain argo application sets that will , upon application into the cluster would result in the creation of various
-argo application based on the folder structure and file directory pattern defined in the application set.
+The metis argo applications sets will generate argo applications based of the helm charts in this repo.
 
 
 # WalkThrough

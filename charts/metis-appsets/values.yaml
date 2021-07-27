@@ -1,0 +1,19 @@
+spec:
+    helmmodules:
+        addons:
+            enabled: true
+        addonsaws:
+            enabled: true
+        logging:
+            enabled: true
+        monitoring:
+            enabled: true
+        dr:
+            enabled: true
+    aws:
+        enabled: true
+    destination:
+        clustername: test
+        server: https://kubernetes.default.svc
+        name: test
+        project: metis-chart

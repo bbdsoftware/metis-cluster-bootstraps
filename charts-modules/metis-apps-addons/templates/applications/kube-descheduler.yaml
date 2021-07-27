@@ -28,7 +28,7 @@ spec:
   source:
     chart: descheduler
     repoURL:   https://kubernetes-sigs.github.io/descheduler/
-    targetRevision: 1.0.2
+    targetRevision: 0.21.0
     helm:
       values: |
         # Default values for descheduler.

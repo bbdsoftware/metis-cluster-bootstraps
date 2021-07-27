@@ -10,8 +10,6 @@ spec:
             enabled: true
         dr:
             enabled: true
-
-
     aws:
         enabled: true
     destination:

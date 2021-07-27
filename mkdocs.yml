@@ -52,7 +52,6 @@ nav:
   - User Manual:
     - Chart Modules: charts/modules/main.md
     - Chart Boostrap: charts/bootstrap/main.md
-  - User Manual:
   - Releases: releases.md
 # Extensions
 markdown_extensions:

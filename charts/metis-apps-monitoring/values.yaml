@@ -1,8 +1,6 @@
 spec:
-    appName:
-        enabled: true
     kubePrometheusStack:
-        enabled: false
+        enabled: true
     prometheusBlackboxExporter:
         enabled: false
     destination:

@@ -2,11 +2,11 @@ spec:
     fuentdcloudwatch:
         enabled: true
     loki:
-        enabled: true
+        enabled: false
     promtail:
-        enabled: false
+        enabled: true
     lokiDistributed:
-        enabled: false
+        enabled: true
     loggingOperator:
         enabled: false
     destination:

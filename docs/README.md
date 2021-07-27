@@ -31,3 +31,6 @@ The metis appset chart contains a collection of argo applications
 The metis argo applications sets contain argo application sets that will , upon application into the cluster would result in the creation of various
 argo application based on the folder structure and file directory pattern defined in the application set.
 
+
+# WalkThrough
+See  [official documentation](https://bbdsoftware.github.io/metis-cluster-bootstraps/charts/bootstrap/main/)

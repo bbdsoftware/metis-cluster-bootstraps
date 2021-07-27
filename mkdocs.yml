@@ -48,7 +48,7 @@ extra:
 nav:
   - Home: README.md
   - Getting Started:
-      - Installing Appsets : charts/modules/main.md
+      - Installing Appsets : charts/bootstrap/main.md
   - User Manual:
     - Chart Modules: charts/modules/main.md
     - Chart Boostrap: charts/bootstrap/main.md

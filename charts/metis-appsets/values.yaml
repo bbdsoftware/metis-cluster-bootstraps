@@ -17,4 +17,3 @@ spec:
         server: https://kubernetes.default.svc
         name: test
         project: metis-chart
-

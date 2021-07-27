@@ -1,4 +1,4 @@
-{{ if .Values.spec.helmmodules.dr.enabled -}}
+{{ if .Values.spec.helmmodules.storage.enabled -}}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -32,7 +32,7 @@ spec:
       source:
         repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
         targetRevision: main
-        path: 'charts/metis-apps-storage'
+        path: 'charts-modules/metis-apps-storage'
         helm:
           parameters:
             - name: "spec.destination.clustername"

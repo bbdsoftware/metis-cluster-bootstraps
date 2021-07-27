@@ -32,7 +32,7 @@ spec:
       source:
         repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
         targetRevision: main
-        path: 'charts/metis-apps-addons'
+        path: 'charts-modules/metis-apps-addons'
         helm:
           parameters:
             - name: "spec.destination.clustername"

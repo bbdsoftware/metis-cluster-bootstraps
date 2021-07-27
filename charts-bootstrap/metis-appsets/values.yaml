@@ -10,6 +10,13 @@ spec:
             enabled: true
         dr:
             enabled: true
+        crossplane:
+            enabled: true
+        chaos:
+            enabled: true
+        storage:
+            enabled: true
+
     aws:
         enabled: true
     destination:

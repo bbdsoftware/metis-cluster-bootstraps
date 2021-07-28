@@ -30,5 +30,5 @@ The metis appset chart contains a collection of argo [applicationsets](https://a
 The metis argo applications sets will generate argo applications based of the helm charts in this repo.
 
 
-# WalkThrough
-See  [official documentation](https://bbdsoftware.github.io/metis-cluster-bootstraps/charts/bootstrap/main/)
+# Contributing
+See  [official documentation](http://127.0.0.1:8000/Contributing/AddingApplications/)

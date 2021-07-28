@@ -17,6 +17,8 @@ spec:
         enabled: true
     gatekeeper:
         enabled: true
+    kubevela:
+        enabled: true
     destination:
         clustername: test
         server: https://kubernetes.default.svc

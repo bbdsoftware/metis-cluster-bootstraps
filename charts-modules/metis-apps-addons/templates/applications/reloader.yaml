@@ -31,8 +31,6 @@ spec:
     targetRevision:  v0.0.50
     helm:
       values: |
-        nameOverride: reloader
-        fullnameOverride: reloader
         global:
           ## Reference to one or more secrets to be used when pulling images
           ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
@@ -83,10 +81,6 @@ spec:
               provider: stakater
               group: com.stakater.platform
               version: v0.0.50
-            image:
-              name: NOTPROVIDED
-              tag: NOTPROVIDED
-              pullPolicy: IfNotPresent
             # Support for extra environment variables.
             env:
               # Open supports Key value pair as environment variables.

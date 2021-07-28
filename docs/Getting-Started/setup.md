@@ -32,7 +32,9 @@ nodes:
 ## 2. Install Argocd and Applcation Set controller
 
 ```
-kubectx kind-kind
+kind delete  cluster --name metis
+kind create cluster --config kind-config.yaml
+kubectx kind-metis
 kubectl create namespace argocd
 kubectl apply -n argocd -f "https://raw.githubusercontent.com/argoproj-labs/applicationset/master/manifests/install-with-argo-cd.yaml"
 ```

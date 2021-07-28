@@ -31,7 +31,7 @@ spec:
     server: {{ .Values.spec.destination.server }}
   project: {{ .Values.spec.destination.project }}
   source:
-    chart: kubevela/vela-core
+    chart: vela-core
     repoURL:  https://kubevelacharts.oss-cn-hangzhou.aliyuncs.com/core
     targetRevision: 1.2.0-rc-master
   {{- end }}

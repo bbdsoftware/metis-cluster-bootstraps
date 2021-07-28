@@ -39,11 +39,6 @@ spec:
         replicas: 1
         deploymentStrategy: RollingUpdate
 
-        image:
-          repository: NOTPROVIDED
-          tag: NOTPROVIDED
-          pullPolicy: Always
-
         leaderElection: true
         args: { }
 

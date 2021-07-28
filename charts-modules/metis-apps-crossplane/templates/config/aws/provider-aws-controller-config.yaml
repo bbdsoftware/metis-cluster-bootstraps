@@ -4,6 +4,7 @@ kind: ControllerConfig
 metadata:
   name: provider-aws-controller-config
   annotations:
+    argocd.argoproj.io/sync-wave: "2"
   {{- if .Values.spec.provider.aws.serviceAccount.annotations -}}
      {{- toYaml .Values.spec.provider.aws.serviceAccount.annotations | nindent 4 }}
   {{- end }}

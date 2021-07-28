@@ -4,7 +4,7 @@ kind: Provider
 metadata:
   name: provider-aws
   annotations:
-    argocd.argoproj.io/sync-wave: "-2"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   package: 'registry.upbound.io/crossplane/provider-aws:{{.Values.spec.provider.aws.version}}'
   controllerConfigRef:

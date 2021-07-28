@@ -13,4 +13,7 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs-material
+      - run: pip install frigate
+      - run: ./helmGenDoc.sh
       - run: mkdocs gh-deploy --force
+

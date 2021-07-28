@@ -18,8 +18,8 @@ theme:
     - tabs
     - instant
   palette:
-    primary: indigo
-    accent: indigo
+    primary: red
+    accent: reds
   font:
     text: Roboto
     code: Roboto Mono
@@ -44,15 +44,15 @@ extra:
 #google_analytics:
 #  - UA-71344758-5
 #  - auto
-
-nav:
-  - Home: README.md
-  - Getting Started:
-      - Installing Appsets : gettingstarted/setup.md
-  - User Manual:
-    - Chart Modules: charts/modules/main.md
-    - Chart Boostrap: charts/bootstrap/main.md
-  - Releases: releases.md
+# leave out nave to genreate from folder structure
+#nav:
+#  - Home: README.md
+#  - Getting Started:
+#      - Installing Appsets : gettingstarted/setup.md
+#  - User Manual:
+#    - Chart Modules: charts/modules/main.md
+#    - Chart Boostrap: charts/bootstrap/main.md
+#  - Releases: releases.md
 # Extensions
 markdown_extensions:
   - admonition

@@ -31,7 +31,7 @@ spec:
     server: {{ .Values.spec.destination.server }}
   project: {{ .Values.spec.destination.project }}
   source:
-    chart: vmware-tanzu/velero
+    chart: velero
     repoURL: https://vmware-tanzu.github.io/helm-charts
     targetRevision:  1.6.2
     helm:

@@ -1,0 +1,32 @@
+apiVersion: v2
+appVersion: "1.0"
+name: metis-apps-oam
+version: 0.0.1
+maintainers:
+  - name: metisbbd
+    email: metisbbd@bbdsoftware.com
+description: >
+  This is the description
+long_description: |
+  This chart will deploy the following:
+  - 1 x Dask scheduler with port 8786 (scheduler) and 80 (Web UI) exposed on an external LoadBalancer (default)
+  - 3 x Dask CUDA workers with RAPIDS environment and a GPU that connect to the scheduler
+  - 1 x Jupyter notebook (optional) with port 80 exposed on an external LoadBalancer (default)
+  - All using Kubernetes Deployments
+  ## Installation
+  ### From source
+  ```console
+
+  ## Development
+  ### Testing
+  ```console
+  $ make test
+  helm lint rapidsai
+  ==> Linting rapidsai
+  Lint OK
+  1 chart(s) linted, no failures
+  ```
+#home: https://rapids.ai/
+#icon: https://github.com/rapidsai.png
+#sources:
+#  - https://github.com/rapidsai

@@ -1,0 +1,9 @@
+spec:
+    kubevela:
+        enabled: true
+    destination:
+        clustername: test
+        server: https://kubernetes.default.svc
+        name: test
+        project: vela-system
+        syncPolicy:

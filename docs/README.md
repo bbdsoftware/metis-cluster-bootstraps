@@ -13,12 +13,10 @@ Cluster bootstraps for GitOps based on argocd
 
 # Repo Structure
 
-This repository is structured into folders containing helm charts.
-Each chart is a collection of argo [application crd](https://argoproj.github.io/argo-cd/operator-manual/declarative-setup/) definitions that related to the installation of toolsets and workloads
-
+There are two folders each containing helm charts used for installing various argocd CRDs
 
 ##charts-modules
-These are a collection  of Helm  Charts organised as  "modules". Each chart module is a collection of argo applications. argocd config and namespaces config for various related addons , operator and kubernetes worklaods.
+These are a collection  of Helm  Charts organised as  "modules". Each chart module is a collection of argo applications, ArgoCD config and namespaces config for various related addons , operator and kubernetes worklaods.
 
 see [Chart Modules](charts/modules/main.md)
 

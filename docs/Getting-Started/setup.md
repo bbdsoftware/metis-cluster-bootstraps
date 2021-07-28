@@ -1,9 +1,6 @@
-# Scripts
-
+# Steps
 
 Utility Script [setupEnv.sh](../../../hack/setupEnv.sh)
-
-# Steps
 
 ## 1. Kind
 

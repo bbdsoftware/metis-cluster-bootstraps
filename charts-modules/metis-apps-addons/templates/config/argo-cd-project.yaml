@@ -16,6 +16,9 @@ spec:
   destinations:
     - namespace: {{ .Values.spec.destination.project}}
       server: "*"
+    - namespace: vela-system
+      server: "*"
+
 
   clusterResourceWhitelist:
     - group: '*'

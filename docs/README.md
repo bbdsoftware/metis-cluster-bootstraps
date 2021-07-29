@@ -35,6 +35,19 @@ targeted kubernetes clusters
 - Each application created represent a toolset,operator or workload that will be provisioned into the cluster/s provisioned for a capability
 
 
+#Overview
+
+![Flow](assets/overview.png)
+
+
+This repo is organised in an argo app of apps pattern leveraging argo application sets to provision and install various helm charts and capabilities into the 
+targeted kubernetes clusters
+
+- When the metis app charts are installed either as manifests, or helm this will result in the creation of various argo application sets configured with clsuter gen
+- These application sets mapping to the metis "chart modules" will create argo applications
+- Each application created represent a toolset,operator or workload that will be provisioned into the cluster/s provisioned for a capability
+
+
 # Repo Structure
 
 There are two folders each containing helm charts used for installing various argocd CRDs

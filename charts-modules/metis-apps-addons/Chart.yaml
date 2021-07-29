@@ -39,7 +39,4 @@ long_description: |
   - reloader : https://github.com/stakater/Reloader
   - Descheduler for Kubernetes : https://github.com/kubernetes-sigs/descheduler
 
-
   ```
-
-

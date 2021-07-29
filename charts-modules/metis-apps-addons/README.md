@@ -36,7 +36,6 @@ To run the linting test a util script called test.sh has been provided to run th
 - reloader : https://github.com/stakater/Reloader
 - Descheduler for Kubernetes : https://github.com/kubernetes-sigs/descheduler
 
-
 ```
 
 ## Configuration

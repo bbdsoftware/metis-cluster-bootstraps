@@ -16,9 +16,7 @@ This chart will result in argo application sets being genreated into the cluster
 Each applicaiton set will be placed in the argocd namespace and resulst in the instealion of a a coresponfing helm "module" for
 each cluster added to argocd for mangament.
 
-
-see [Chart Modules](../../charts/modules/main.md)
-
+See chart modules section
 ## Configuration
 
 The following table lists the configurable parameters of the Metis-appsets chart and their default values.

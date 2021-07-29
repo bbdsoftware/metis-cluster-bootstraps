@@ -1,27 +1,30 @@
 
 # Introduction
-See  [official documentation](https://bbdsoftware.github.io/metis-cluster-bootstraps/)
+See [official documentation](https://bbdsoftware.github.io/metis-cluster-bootstraps/)
 
 # Introduction
-Cluster bootstraps for GitOps based on argocd
+Cluster bootstraps for GitOps based on argocd.
 
 # PreRequisites
-- K8 clsuter eg [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+- K8 cluster eg [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
 - Installed [kubectl](https://kubernetes.io/docs/tasks/tools/) command-line tool
-- Argo + Argo Applicationsets controller   [Install](https://argocd-applicationset.readthedocs.io/en/stable/Geting-Started/)
+- Installed kubectl [krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/) package manager
+- Installed [kubectx](https://github.com/ahmetb/kubectx) power tools for kubectl
+- Installed [helm3](https://helm.sh/docs/intro/install/)
+- Installed [Argo + Argo ApplicationSets controller](https://argocd-applicationset.readthedocs.io/en/stable/Geting-Started/)
 
 
 # Repo Structure
 
-There are two folders each containing helm charts used for installing various argocd CRDs
+There are two folders each containing helm charts used for installing various argocd CRDs.
 
 ##charts-modules
-These are a collection  of Helm  Charts organised as  "modules". Each chart module is a collection of argo applications, ArgoCD config and namespaces config for various related addons , operator and kubernetes worklaods.
+These are a collection  of Helm  Charts organised as "modules". Each chart module is a collection of argo applications, ArgoCD config and namespaces config for various related addons , operator and kubernetes worklaods.
 
 see [Chart Modules](charts/modules/main.md)
 
 
-##charts-boostrap
+## charts-bootstrap
 
 ## metis appliciation sets
 

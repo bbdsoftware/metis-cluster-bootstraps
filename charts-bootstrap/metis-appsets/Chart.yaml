@@ -1,8 +1,24 @@
 apiVersion: v2
 appVersion: "1.0"
-description: A Helm chart child for metis argo app sets
 name: metis-appsets
 version: 0.0.1
 maintainers:
   - name: metisbbd
     email: metisbbd@bbdsoftware.com
+description: >
+  Helm chart for the instellatiion of argo application sets that will bootrap argo applications into the cluster
+long_description: |
+  ## Installation
+
+  Install manifests
+  ```
+    helm template /charts-bootstrap/metis-appsets | kubectl delete -n argocd -f -
+  ```
+
+  This chart will result in argo application sets being genreated into the cluster.
+  Each applicaiton set will be placed in the argocd namespace and resulst in the instealion of a a coresponfing helm "module" for
+  each cluster added to argocd for mangament.
+
+  See chart modules section
+
+

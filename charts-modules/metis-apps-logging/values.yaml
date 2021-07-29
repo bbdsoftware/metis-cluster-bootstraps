@@ -9,6 +9,8 @@ spec:
         enabled: true
     loggingOperator:
         enabled: false
+    aws:
+        enabled: true
     destination:
         clustername: test
         server: https://kubernetes.default.svc

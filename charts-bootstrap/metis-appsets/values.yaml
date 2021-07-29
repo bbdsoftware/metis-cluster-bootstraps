@@ -1,26 +1,24 @@
 spec:
     helmmodules:
         addons:
-            enabled: true
+            enabled: true # enabled the helm chart module for installation of default set of kubernetes addons and capabilities
         addonsaws:
-            enabled: true
+            enabled: true # enabled the helm chart module for installation of aws eks spesfic worklaods eg alb ingress etc
         logging:
-            enabled: true
+            enabled: true # enabled the helm chart module for installation of common logging statks eg ELK, LOKI etc
         monitoring:
-            enabled: true
+            enabled: true # enabled the helm chart module for installation of standard monitoring stacks ie kube-promethues, blackbok exporter etc
         dr:
-            enabled: true
+            enabled: true # enabled the helm chart module for installation of disaster recovery workloads and tools
         crossplane:
-            enabled: true
+            enabled: true # enabled the helm chart module for installation of crossplane and providers
         chaos:
-            enabled: true
+            enabled: true # enabled the helm chart module for choas workloads and config
         storage:
-            enabled: true
-
+            enabled: true # enabled the helm chart module for storage workloads and config
     aws:
         enabled: true
     destination:
         clustername: test
-        server: https://kubernetes.default.svc
-        name: test
-        project: metis-chart
+        server: https://kubernetes.default.svc # agocd registered server address
+        project: metis-chart #agocd project name

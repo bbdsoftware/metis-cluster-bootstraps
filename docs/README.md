@@ -11,7 +11,17 @@ Cluster bootstraps for GitOps based on argocd
 - Argo + Argo Applicationsets controller   [Install](https://argocd-applicationset.readthedocs.io/en/stable/Geting-Started/)
 - kubectx -  https://github.com/ahmetb/kubectx
 
-
+# Recommend Videos and Reading
+- ArgoCD GIT Ops
+    - https://www.youtube.com/watch?v=vpWQeoaiRM4
+    - https://argoproj.github.io/argo-cd/getting_started/
+- OAM
+    - https://www.youtube.com/watch?v=2CBu6sOTtwk&t=620s
+- Crossplane:
+  - https://www.youtube.com/watch?v=yrj4lmScKHQ
+  - https://www.youtube.com/watch?v=n8KjVmuHm7A&t=1248s
+  - https://blog.crossplane.io/why-crossplane-is-so-exciting/  
+    
 #Overview
 
 ![Flow](assets/overview.png)

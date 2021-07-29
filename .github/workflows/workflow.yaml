@@ -37,7 +37,7 @@ jobs:
           fi
 
       - name: Run chart-testing (lint)
-        run: ct lint --config ct.yaml --chart-yaml-schema test/chart_schema.yaml --lint-conf test/lint_config.yaml
+        run: ct lint --config test/ct.yaml --chart-yaml-schema test/chart_schema.yaml --lint-conf test/lint_config.yaml
 
 
 #       TODO need to install argo into the kind cluster for this to work

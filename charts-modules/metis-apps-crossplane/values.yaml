@@ -3,10 +3,11 @@ spec:
         enabled: true
     provider:
         aws:
-            enabled: true
             version: v0.16.0
             serviceAccount:
                 annotations: {}
+    aws:
+        enabled: true
     destination:
         clustername: test
         server: https://kubernetes.default.svc

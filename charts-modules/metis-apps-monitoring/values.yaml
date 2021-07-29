@@ -3,6 +3,8 @@ spec:
         enabled: true
     prometheusBlackboxExporter:
         enabled: false
+    aws:
+        enabled: true
     destination:
         clustername: test
         server: https://kubernetes.default.svc

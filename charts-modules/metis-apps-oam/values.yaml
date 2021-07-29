@@ -1,6 +1,8 @@
 spec:
     kubevela:
         enabled: true
+    aws:
+        enabled: true
     destination:
         clustername: test
         server: https://kubernetes.default.svc

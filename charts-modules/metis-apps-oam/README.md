@@ -32,6 +32,8 @@ capabilities
 ### Linting
 To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
 
+## Helm Charts included as applications
+ - kube-vela   : https://github.com/oam-dev/kubevela/
 
 
 
@@ -43,13 +45,12 @@ The following table lists the configurable parameters of the Metis-apps-oam char
 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |
-| `spec.kubevela.enabled` |  | `true` |
-| `spec.aws.enabled` |  | `true` |
+| `spec.kubevela.enabled` | install the kube-vela oma capability | `true` |
+| `spec.aws.enabled` | enabled if running in aws eks | `true` |
 | `spec.destination.clustername` |  | `"test"` |
-| `spec.destination.server` |  | `"https://kubernetes.default.svc"` |
+| `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |
 | `spec.destination.name` |  | `"test"` |
-| `spec.destination.project` |  | `"vela-system"` |
-| `spec.destination.syncPolicy` |  | `null` |
+| `spec.destination.project` | agocd project name | `"vela-system"` |
 
 
 

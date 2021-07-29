@@ -35,8 +35,14 @@ long_description: |
   ### Linting
   To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
 
-  ## Sub Charts
+  ## Helm Charts included as applications
   - reloader : https://github.com/stakater/Reloader
   - Descheduler for Kubernetes : https://github.com/kubernetes-sigs/descheduler
+  - goldilocks : https://goldilocks.docs.fairwinds.com/
+  - kube-downscaler : https://codeberg.org/hjacobs/kube-downscaler
+  - refecltor : https://github.com/emberstack/kubernetes-reflector
+  - kube-cleanup : https://github.com/lwolf/kube-cleanup-operator
+  - valut injector : https://www.vaultproject.io/docs/platform/k8s/injector
+  - gatekeeper :https://kubernetes.io/blog/2019/08/06/opa-gatekeeper-policy-and-governance-for-kubernetes/
 
   ```

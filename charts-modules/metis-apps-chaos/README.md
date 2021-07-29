@@ -31,6 +31,8 @@ capabilities
 ### Linting
 To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
 
+## Helm Charts included as applications
+ - powerfulseal   : https://github.com/powerfulseal/powerfulseal
 
 
 
@@ -41,14 +43,13 @@ The following table lists the configurable parameters of the Metis-apps-chaos ch
 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |
-| `spec.powerfulseal.enabled` |  | `true` |
-| `spec.chaosMesh.enabled` |  | `true` |
+| `spec.powerfulseal.enabled` | install pwoerfull seal controller | `true` |
+| `spec.chaosMesh.enabled` | install chaos mesh | `true` |
 | `spec.aws.enabled` |  | `true` |
 | `spec.destination.clustername` |  | `"test"` |
-| `spec.destination.server` |  | `"https://kubernetes.default.svc"` |
+| `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |
 | `spec.destination.name` |  | `"test"` |
-| `spec.destination.project` |  | `"kube-apps-chaos"` |
-| `spec.destination.syncPolicy` |  | `null` |
+| `spec.destination.project` | agocd project name | `"kube-apps-chaos"` |
 | `spec.source.repoURL` |  | `"https://github.com/bbdsoftware/metis-cluster-bootstraps.git"` |
 | `spec.source.customChartPath` |  | `"charts/metis-apps-chaos/custom-charts/"` |
 

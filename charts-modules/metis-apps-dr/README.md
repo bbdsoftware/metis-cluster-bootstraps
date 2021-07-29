@@ -32,7 +32,8 @@ capabilities
 ### Linting
 To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
 
-
+## Helm Charts included as applications
+ - velero   : https://github.com/vmware-tanzu/helm-charts
 
 
 ```
@@ -45,10 +46,9 @@ The following table lists the configurable parameters of the Metis-apps-dr chart
 | `spec.velero.enabled` |  | `true` |
 | `spec.aws.enabled` |  | `true` |
 | `spec.destination.clustername` |  | `"test"` |
-| `spec.destination.server` |  | `"https://kubernetes.default.svc"` |
+| `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |
 | `spec.destination.name` |  | `"test"` |
-| `spec.destination.project` |  | `"kube-apps-dr"` |
-| `spec.destination.syncPolicy` |  | `null` |
+| `spec.destination.project` | agocd project name | `"kube-apps-dr"` |
 
 
 

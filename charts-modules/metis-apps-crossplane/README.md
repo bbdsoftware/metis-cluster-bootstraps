@@ -31,6 +31,9 @@ capabilities
 ### Linting
 To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
 
+## Helm Charts included as applications
+ - crossplane   : https://crossplane.io/
+
 
 
 
@@ -41,15 +44,14 @@ The following table lists the configurable parameters of the Metis-apps-crosspla
 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |
-| `spec.crossplane.enabled` |  | `true` |
-| `spec.provider.aws.version` |  | `"v0.16.0"` |
-| `spec.provider.aws.serviceAccount.annotations` |  | `{}` |
+| `spec.crossplane.enabled` | install crosplane controller | `true` |
+| `spec.provider.aws.version` | install aws provider version | `"v0.16.0"` |
+| `spec.provider.aws.serviceAccount.annotations` | provider service annotaion | `{}` |
 | `spec.aws.enabled` |  | `true` |
 | `spec.destination.clustername` |  | `"test"` |
-| `spec.destination.server` |  | `"https://kubernetes.default.svc"` |
+| `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |
 | `spec.destination.name` |  | `"test"` |
-| `spec.destination.project` |  | `"kube-addons-crossplane"` |
-| `spec.destination.syncPolicy` |  | `null` |
+| `spec.destination.project` | agocd project name | `"kube-addons-crossplane"` |
 
 
 

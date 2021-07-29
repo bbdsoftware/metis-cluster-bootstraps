@@ -1,11 +1,10 @@
 spec:
     kubevela:
-        enabled: true
+        enabled: true # install the kube-vela oma capability
     aws:
-        enabled: true
+        enabled: true # enabled if running in aws eks
     destination:
         clustername: test
-        server: https://kubernetes.default.svc
+        server: https://kubernetes.default.svc # agocd registered server address
         name: test
-        project: vela-system
-        syncPolicy:
+        project: vela-system # agocd project name

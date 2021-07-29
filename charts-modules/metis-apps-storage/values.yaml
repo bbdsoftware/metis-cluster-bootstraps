@@ -2,10 +2,10 @@ spec:
     appName:
         enabled: true
     aws:
-        enabled: true
+        enabled: true # enabled if running in aws eks
     destination:
         clustername: test
-        server: https://kubernetes.default.svc
+        server: https://kubernetes.default.svc # agocd registered server address
         name: test
-        project: kube-apps-storage
+        project: kube-apps-storage # agocd project name
         syncPolicy:

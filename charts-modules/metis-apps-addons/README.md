@@ -32,9 +32,15 @@ capabilities
 ### Linting
 To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
 
-## Sub Charts
+## Helm Charts included as applications
 - reloader : https://github.com/stakater/Reloader
 - Descheduler for Kubernetes : https://github.com/kubernetes-sigs/descheduler
+- goldilocks : https://goldilocks.docs.fairwinds.com/
+- kube-downscaler : https://codeberg.org/hjacobs/kube-downscaler
+- refecltor : https://github.com/emberstack/kubernetes-reflector
+- kube-cleanup : https://github.com/lwolf/kube-cleanup-operator
+- valut injector : https://www.vaultproject.io/docs/platform/k8s/injector
+- gatekeeper :https://kubernetes.io/blog/2019/08/06/opa-gatekeeper-policy-and-governance-for-kubernetes/
 
 ```
 
@@ -44,21 +50,21 @@ The following table lists the configurable parameters of the Metis-apps-addons c
 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |
-| `spec.vpa.enabled` |  | `true` |
-| `spec.vaultInjector.enabled` |  | `true` |
-| `spec.reloader.enabled` |  | `true` |
-| `spec.reflector.enabled` |  | `true` |
-| `spec.kubernetesExternalSecrets.enabled` |  | `true` |
-| `spec.kubecleanup.enabled` |  | `true` |
-| `spec.kubedownscaler.enabled` | installs the https://hahow-helm-charts.storage.googleapis.com/ chart | `true` |
-| `spec.kubedescheduler.enabled` | installs the https://kubernetes-sigs.github.io/descheduler/ chart | `true` |
-| `spec.gatekeeper.enabled` |  | `true` |
-| `spec.kubevela.enabled` |  | `true` |
+| `spec.vpa.enabled` | install golidlock and vpa for remocndations | `true` |
+| `spec.vaultInjector.enabled` | install vaaul injector for use with vault | `true` |
+| `spec.reloader.enabled` | install relaoder for workload restarts on config/sec changes | `true` |
+| `spec.reflector.enabled` | install refecltor to copy secrets between namespaces | `true` |
+| `spec.kubernetesExternalSecrets.enabled` | install extreanl secretes for use with vault or aws paramstore or secrets manger | `true` |
+| `spec.kubecleanup.enabled` | iinstall kube clean up to auomate clean up of evited pods , completed jobs etc | `true` |
+| `spec.kubedownscaler.enabled` | install downscaler to scale ns , workloads based ons schedules and periods | `true` |
+| `spec.kubedescheduler.enabled` | install deschduler to rebalnce clsuter nodes and worklaods | `true` |
+| `spec.gatekeeper.enabled` | gatekeeper to provide for polcies and security controls | `true` |
+| `spec.kubevela.enabled` | enamble OAM model for deployment of k8 workloads | `true` |
 | `spec.aws.enabled` |  | `true` |
 | `spec.destination.clustername` |  | `"test"` |
-| `spec.destination.server` |  | `"https://kubernetes.default.svc"` |
+| `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |
 | `spec.destination.name` |  | `"test"` |
-| `spec.destination.project` |  | `"kube-addons"` |
+| `spec.destination.project` | agocd project name | `"kube-addons"` |
 | `spec.destination.syncPolicy` |  | `null` |
 
 

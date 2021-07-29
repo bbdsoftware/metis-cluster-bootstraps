@@ -42,11 +42,11 @@ The following table lists the configurable parameters of the Metis-apps-storage 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |
 | `spec.appName.enabled` |  | `true` |
-| `spec.aws.enabled` |  | `true` |
+| `spec.aws.enabled` | enabled if running in aws eks | `true` |
 | `spec.destination.clustername` |  | `"test"` |
-| `spec.destination.server` |  | `"https://kubernetes.default.svc"` |
+| `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |
 | `spec.destination.name` |  | `"test"` |
-| `spec.destination.project` |  | `"kube-apps-storage"` |
+| `spec.destination.project` | agocd project name | `"kube-apps-storage"` |
 | `spec.destination.syncPolicy` |  | `null` |
 
 

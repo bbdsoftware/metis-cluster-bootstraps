@@ -32,6 +32,9 @@ capabilities
 ### Linting
 To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
 
+## Helm Charts included as applications
+ - kube-prometheus   : https://github.com/prometheus-operator/kube-prometheus
+ - blackbox_exporter   : https://github.com/prometheus/blackbox_exporter
 
 
 
@@ -46,9 +49,9 @@ The following table lists the configurable parameters of the Metis-apps-monitori
 | `spec.prometheusBlackboxExporter.enabled` |  | `false` |
 | `spec.aws.enabled` |  | `true` |
 | `spec.destination.clustername` |  | `"test"` |
-| `spec.destination.server` |  | `"https://kubernetes.default.svc"` |
-| `spec.destination.name` |  | `"test"` |
-| `spec.destination.project` |  | `"kube-apps-monitoring"` |
+| `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |
+| `spec.destination.name` | agocd registered server name | `"test"` |
+| `spec.destination.project` | agocd project name | `"kube-apps-monitoring"` |
 
 
 

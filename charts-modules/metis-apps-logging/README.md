@@ -31,7 +31,12 @@ capabilities
 ### Linting
 To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
 
-
+## Helm Charts included as applications
+ - logging-operator   : https://github.com/banzaicloud/logging-operator
+ -loki distibuted  : https://artifacthub.io/packages/helm/grafana/loki-distributed
+- loki stack  : https://artifacthub.io/packages/helm/grafana/loki-stack
+- promtial  : https://artifacthub.io/packages/helm/grafana/promtail
+- fluentd-cloudwathc : https://github.com/helm/charts/blob/master/incubator/fluentd-cloudwatch/README.md
 
 
 ```
@@ -41,16 +46,16 @@ The following table lists the configurable parameters of the Metis-apps-logging 
 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |
-| `spec.fuentdcloudwatch.enabled` |  | `true` |
-| `spec.loki.enabled` |  | `false` |
-| `spec.promtail.enabled` |  | `true` |
-| `spec.lokiDistributed.enabled` |  | `true` |
-| `spec.loggingOperator.enabled` |  | `false` |
+| `spec.fuentdcloudwatch.enabled` | install the fleuntd cloud-watch deamonset for logging to CW | `true` |
+| `spec.loki.enabled` | install thecomplete loki stack | `false` |
+| `spec.promtail.enabled` | install promtail DS | `true` |
+| `spec.lokiDistributed.enabled` | install loki as a HA distibuted install | `true` |
+| `spec.loggingOperator.enabled` | install bitnami loggin operator | `false` |
 | `spec.aws.enabled` |  | `true` |
 | `spec.destination.clustername` |  | `"test"` |
-| `spec.destination.server` |  | `"https://kubernetes.default.svc"` |
+| `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |
 | `spec.destination.name` |  | `"test"` |
-| `spec.destination.project` |  | `"kube-apps-logging"` |
+| `spec.destination.project` | agocd project name | `"kube-apps-logging"` |
 
 
 

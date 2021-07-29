@@ -31,6 +31,8 @@ capabilities
 ### Linting
 To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
 
+## Helm Charts included as applications
+ - aws-node-termination-handler   : https://github.com/aws/aws-node-termination-handler
 
 
 
@@ -45,9 +47,9 @@ The following table lists the configurable parameters of the Metis-apps-addons-a
 | `spec.albIngressController.enabled` |  | `true` |
 | `spec.aws.enabled` |  | `true` |
 | `spec.destination.clustername` |  | `"test"` |
-| `spec.destination.server` |  | `"https://kubernetes.default.svc"` |
+| `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |
 | `spec.destination.name` |  | `"test"` |
-| `spec.destination.project` |  | `"kube-addons-aws"` |
+| `spec.destination.project` | agocd project name | `"kube-addons-aws"` |
 | `spec.destination.syncPolicy` |  | `null` |
 
 

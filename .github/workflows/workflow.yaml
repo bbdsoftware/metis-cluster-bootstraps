@@ -31,10 +31,11 @@ jobs:
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
-          changed=$(ct list-changed --config ct.yaml)
+          changed=$(ct list-changed --config test/ct.yaml)
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
+
 
       - name: Run chart-testing (lint)
         run: ct lint --config test/ct.yaml --chart-yaml-schema test/chart_schema.yaml --lint-conf test/lint_config.yaml

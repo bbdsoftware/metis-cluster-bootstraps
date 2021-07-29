@@ -19,6 +19,10 @@ spec:
         enabled: true #  gatekeeper to provide for polcies and security controls
     kubevela:
         enabled: true #  enamble OAM model for deployment of k8 workloads
+    sealedsecret:
+        enabled: true # enable sealed secret to store your secret safely
+    kubernetesexternalsecret:
+        enabled: true
     aws:
         enabled: true
     destination:

@@ -1,15 +1,12 @@
 
-# Introduction
-See  [official documentation](https://bbdsoftware.github.io/metis-cluster-bootstraps/)
+
+
+
 
 # Introduction
-Cluster bootstraps for GitOps based on argocd
+[Documentation Site](https://bbdsoftware.github.io/metis-cluster-bootstraps/)
+Cluster bootstraps for GitOps based on argocd, see main doc site for details
 
-# PreRequisites
-- K8 clsuter eg [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
-- Installed [kubectl](https://kubernetes.io/docs/tasks/tools/) command-line tool
-- Argo + Argo Applicationsets controller   [Install](https://argocd-applicationset.readthedocs.io/en/stable/Geting-Started/)
-- kubectx -  https://github.com/ahmetb/kubectx
 
 # Recommend Videos and Reading
 - ArgoCD GIT Ops
@@ -35,17 +32,11 @@ targeted kubernetes clusters
 - Each application created represent a toolset,operator or workload that will be provisioned into the cluster/s provisioned for a capability
 
 
-#Overview
-
-![Flow](assets/overview.png)
-
-
-This repo is organised in an argo app of apps pattern leveraging argo application sets to provision and install various helm charts and capabilities into the 
-targeted kubernetes clusters
-
-- When the metis app charts are installed either as manifests, or helm this will result in the creation of various argo application sets configured with clsuter gen
-- These application sets mapping to the metis "chart modules" will create argo applications
-- Each application created represent a toolset,operator or workload that will be provisioned into the cluster/s provisioned for a capability
+# PreRequisites
+- K8 clsuter eg [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+- Installed [kubectl](https://kubernetes.io/docs/tasks/tools/) command-line tool
+- Argo + Argo Applicationsets controller   [Install](https://argocd-applicationset.readthedocs.io/en/stable/Geting-Started/)
+- kubectx -  https://github.com/ahmetb/kubectx
 
 
 # Repo Structure

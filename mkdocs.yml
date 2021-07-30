@@ -24,11 +24,10 @@ theme:
     text: Roboto
     code: Roboto Mono
   icon:
-    logo: material/library
+    logo: assest/metisiconsmall.png
     repo: material/ship-wheel
-  favicon: logo.png
-  logo:
-    images/logo.png
+  favicon: assest/metisiconsmall.png
+  logo: assest/metisiconsmall.png
 
 # Extras
 extra:

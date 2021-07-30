@@ -1,8 +1,8 @@
-{{ if .Values.spec.kubernetesexternalsecret.enabled -}}
+{{ if .Values.spec.externaldns.enabled -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kubernetes-external-secret-{{.Values.spec.destination.clustername}}
+  name: external-dns-{{.Values.spec.destination.clustername}}
   namespace: argocd
 spec:
   syncPolicy:
@@ -26,7 +26,7 @@ spec:
     server: {{.Values.spec.destination.server}}
   project: {{.Values.spec.destination.project}}
   source:
-    path: kubernetes-external-secrets
-    repoURL: https://external-secrets.github.io/kubernetes-external-secrets/
-    targetRevision: 6.0.0
-  {{- end }}
+    path: external-dns
+    repoURL: https://charts.helm.sh/
+    targetRevision: 2.20.4
+{{- end }}

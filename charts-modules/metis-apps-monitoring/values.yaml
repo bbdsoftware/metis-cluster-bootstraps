@@ -3,6 +3,8 @@ spec:
         enabled: true
     prometheusBlackboxExporter:
         enabled: false
+    kubecost:
+        enabled: true
     aws:
         enabled: true
     destination:

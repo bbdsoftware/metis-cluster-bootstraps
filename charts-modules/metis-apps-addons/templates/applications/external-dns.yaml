@@ -26,7 +26,7 @@ spec:
     server: {{.Values.spec.destination.server}}
   project: {{.Values.spec.destination.project}}
   source:
-    path: external-dns
+    chart: external-dns
     repoURL: https://charts.helm.sh/
     targetRevision: 2.20.4
 {{- end }}

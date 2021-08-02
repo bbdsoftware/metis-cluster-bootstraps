@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: metis-apps-storage
+  name: metis-apps-chaos
   namespace: argocd
 spec:
   generators:

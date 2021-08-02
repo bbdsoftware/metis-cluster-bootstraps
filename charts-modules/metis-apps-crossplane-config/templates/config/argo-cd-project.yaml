@@ -16,6 +16,8 @@ spec:
   destinations:
     - namespace: {{ .Values.spec.destination.project}}
       server: "*"
+    - namespace: kube-addons-crossplane
+      server: "*"
 
   clusterResourceWhitelist:
     - group: '*'

@@ -33,6 +33,6 @@ spec:
   source:
     chart: vela-core
     repoURL:  https://kubevelacharts.oss-cn-hangzhou.aliyuncs.com/core
-    targetRevision: 0.1.0
+    targetRevision: 1.0.7
   {{- end }}
 

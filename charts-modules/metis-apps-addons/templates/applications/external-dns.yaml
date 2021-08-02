@@ -27,6 +27,6 @@ spec:
   project: {{.Values.spec.destination.project}}
   source:
     chart: external-dns
-    repoURL: https://charts.helm.sh/
-    targetRevision: 2.20.4
-{{- end }}
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 5.2.2
+  {{- end }}

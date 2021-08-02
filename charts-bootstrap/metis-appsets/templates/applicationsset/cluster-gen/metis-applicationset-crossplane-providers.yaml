@@ -1,8 +1,8 @@
-{{ if .Values.spec.helmmodules.logging.enabled -}}
+{{ if .Values.spec.helmmodules.crossplane.enabled -}}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: metis-apps-logging
+  name: metis-apps-crossplane-providers
   namespace: argocd
 spec:
   generators:
@@ -10,7 +10,9 @@ spec:
   template:
     # This is a template Argo CD Application, but with support for parameter substitution.
     metadata:
-      name: "{{ printf "{{name}}" }}-metis-apps-logging"
+      name: "{{ printf "{{name}}" }}metis-apps-crossplane-providers"
+      annotations:
+        argocd.argoproj.io/sync-wave: "2"
     spec:
       syncPolicy:
         automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
@@ -24,7 +26,7 @@ spec:
           - PruneLast=true # Allow the ability for resource pruning to happen as a final, implicit wave of a sync operation
           - ApplyOutOfSyncOnly=true
         retry:
-          limit: -1 # number of failed sync attempt retries; unlimited number of attempts if less than 0
+          limit: 15 # number of failed sync attempt retries; unlimited number of attempts if less than 0
           backoff:
             duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
             factor: 2 # a factor to multiply the base duration after each failed retry
@@ -33,7 +35,7 @@ spec:
       source:
         repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
         targetRevision: {{.Values.spec.destination.revision}}
-        path: 'charts-modules/metis-apps-logging'
+        path: 'charts-modules/metis-apps-crossplane-providers'
         helm:
           parameters:
             - name: "spec.destination.clustername"
@@ -42,8 +44,6 @@ spec:
             - name: "spec.aws.enabled"
               value:  "{{.Values.spec.aws.enabled}}"
               forceString: true # ensures that value is treated as a stri
-
-
       destination:
         server:  "{{ printf "{{server}}" }}"
         namespace: metis-bootstrap

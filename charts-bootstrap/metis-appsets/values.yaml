@@ -22,3 +22,4 @@ spec:
         clustername: test
         server: https://kubernetes.default.svc # agocd registered server address
         project: metis-chart # agocd project name
+        revision: crossplane

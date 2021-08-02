@@ -38,6 +38,10 @@ spec:
             - name: "spec.destination.clustername"
               value:  "{{ printf "{{name}}" }}"
               forceString: true # ensures that value is treated as a stri
+            - name: "spec.aws.enabled"
+              value:  "{{.Values.spec.aws.enabled}}"
+              forceString: true # ensures that value is treated as a stri
+
 
       destination:
         server:  "{{ printf "{{server}}" }}"

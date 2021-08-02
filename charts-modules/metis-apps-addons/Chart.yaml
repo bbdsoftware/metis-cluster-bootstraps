@@ -6,27 +6,43 @@ maintainers:
   - name: metisbbd
     email: metisbbd@bbdsoftware.com
 description: >
-  This is the description
+  Helm chart for the description of
 long_description: |
-  This chart will deploy the following:
-  - 1 x Dask scheduler with port 8786 (scheduler) and 80 (Web UI) exposed on an external LoadBalancer (default)
-  - 3 x Dask CUDA workers with RAPIDS environment and a GPU that connect to the scheduler
-  - 1 x Jupyter notebook (optional) with port 80 exposed on an external LoadBalancer (default)
-  - All using Kubernetes Deployments
-  ## Installation
-  ### From source
-  ```console
+  # APP of APPS Bootstrap for kube-oam
+
+  This char contains all argo applications that would be deployed into the kube-addons namespace to provide for various
+  capabilities
+
+  ## Structure
+
+  ### **Tempaltes:**
+
+
+  - **Argo Applications**
+
+      This folder contains the argo applications that would be deployed as part of kube-addons bootstraps
+
+  - **ArgoConfig**
+
+      This contains the project definitons  for the argo project
+      This  contains the argo defintions for the namespaces kube-addons
+
+  - **RBAC**
+
+      This contains the rbac configs for the kube-addons ns
 
   ## Development
-  ### Testing
-  ```console
-  $ make test
-  helm lint rapidsai
-  ==> Linting rapidsai
-  Lint OK
-  1 chart(s) linted, no failures
+  ### Linting
+  To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
+
+  ## Helm Charts included as applications
+  - reloader : https://github.com/stakater/Reloader
+  - Descheduler for Kubernetes : https://github.com/kubernetes-sigs/descheduler
+  - goldilocks : https://goldilocks.docs.fairwinds.com/
+  - kube-downscaler : https://codeberg.org/hjacobs/kube-downscaler
+  - refecltor : https://github.com/emberstack/kubernetes-reflector
+  - kube-cleanup : https://github.com/lwolf/kube-cleanup-operator
+  - valut injector : https://www.vaultproject.io/docs/platform/k8s/injector
+  - gatekeeper :https://kubernetes.io/blog/2019/08/06/opa-gatekeeper-policy-and-governance-for-kubernetes/
+
   ```
-#home: https://rapids.ai/
-#icon: https://github.com/rapidsai.png
-#sources:
-#  - https://github.com/rapidsai

@@ -1,27 +1,33 @@
 spec:
     vpa:
-        enabled: true
+        enabled: true  # install golidlock and vpa for remocndations
     vaultInjector:
-        enabled: true
+        enabled: true # install vaaul injector for use with vault
     reloader:
-        enabled: true
+        enabled: true # install relaoder for workload restarts on config/sec changes
     reflector:
-        enabled: true
+        enabled: true # install refecltor to copy secrets between namespaces
     kubernetesExternalSecrets:
-        enabled: true
+        enabled: true # install extreanl secretes for use with vault or aws paramstore or secrets manger
     kubecleanup:
-        enabled: true
+        enabled: true # iinstall kube clean up to auomate clean up of evited pods , completed jobs etc
     kubedownscaler:
-        enabled: true
+        enabled: true # install downscaler to scale ns , workloads based ons schedules and periods
     kubedescheduler:
-        enabled: true
+        enabled: true # install deschduler to rebalnce clsuter nodes and worklaods
     gatekeeper:
-        enabled: true
+        enabled: true #  gatekeeper to provide for polcies and security controls
     kubevela:
+        enabled: true #  enamble OAM model for deployment of k8 workloads
+    sealedsecret:
+        enabled: true # enable sealed secret to store your secret safely
+    kubernetesexternalsecret:
+        enabled: true
+    aws:
         enabled: true
     destination:
         clustername: test
-        server: https://kubernetes.default.svc
+        server: https://kubernetes.default.svc # agocd registered server address
         name: test
-        project: kube-addons
+        project: kube-addons # agocd project name
         syncPolicy:

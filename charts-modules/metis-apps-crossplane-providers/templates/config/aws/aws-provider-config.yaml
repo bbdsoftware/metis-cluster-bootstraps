@@ -1,5 +1,5 @@
 {{ if .Values.spec.aws.enabled -}}
-apiVersion: aws.crossplane.io/v1beta1
+apiVersion: aws.crossplane.io/v1
 kind: ProviderConfig
 metadata:
   name: default

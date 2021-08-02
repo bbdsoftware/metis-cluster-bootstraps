@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: metis-apps-crossplane
+  name: metis-apps-crossplane-config
   namespace: argocd
 spec:
   generators:
@@ -32,7 +32,7 @@ spec:
       project: metis-bootstrap
       source:
         repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
-        targetRevision: main
+        targetRevision: {{.Values.spec.destination.revision}}
         path: 'charts-modules/metis-apps-crossplane-config'
         helm:
           parameters:

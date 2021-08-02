@@ -27,7 +27,7 @@ spec:
     - group: rbac.authorization.k8s.io
       kind: ClusterRole
       jsonPointers:
-        - /rules
+        - /
   destination:
     namespace:  {{ .Values.spec.destination.project }}
     server: {{ .Values.spec.destination.server }}

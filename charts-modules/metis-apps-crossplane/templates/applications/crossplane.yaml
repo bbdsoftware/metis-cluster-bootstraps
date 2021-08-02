@@ -24,10 +24,10 @@ spec:
 {{/*        factor: 2 # a factor to multiply the base duration after each failed retry*/}}
 {{/*        maxDuration: 3m # the maximum amount of time allowed for the backoff strategy*/}}
   ignoreDifferences:
-    - group: admissionregistration.k8s.io
-      kind: ValidatingWebhookConfiguration
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
       jsonPointers:
-        - /webhooks
+        - /rules
   destination:
     namespace:  {{ .Values.spec.destination.project }}
     server: {{ .Values.spec.destination.server }}

@@ -23,6 +23,8 @@ spec:
         enabled: true # enable sealed secret to store your secret safely
     kubernetesexternalsecret:
         enabled: true
+    externaldns:
+        enabled: true
     aws:
         enabled: true
     destination:

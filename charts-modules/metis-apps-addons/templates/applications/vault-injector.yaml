@@ -21,12 +21,17 @@ spec:
         duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
         factor: 2 # a factor to multiply the base duration after each failed retry
         maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
+  ignoreDifferences:
+    - group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
+      jsonPointers:
+        - /webhooks
   destination:
     namespace: {{.Values.spec.destination.project}}
     server: {{.Values.spec.destination.server}}
   project: {{.Values.spec.destination.project}}
   source:
-    path: vault
+    chart: vault
     repoURL: https://helm.releases.hashicorp.com
     targetRevision: 0.13.0
 {{- end }}

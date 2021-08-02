@@ -29,4 +29,10 @@ spec:
     chart: cost-analyzer
     repoURL: https://kubecost.github.io/cost-analyzer/
     targetRevision: 1.81.0
+    helm:
+      values: |
+        nodeExporter:
+          enabled: false
+
 {{- end }}
+

@@ -1,8 +1,8 @@
-{{ if .Values.spec.sealedsecret.enabled -}}
+{{ if .Values.spec.externaldns.enabled -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sealed-secret-{{.Values.spec.destination.clustername}}
+  name: external-dns-{{.Values.spec.destination.clustername}}
   namespace: argocd
 spec:
   syncPolicy:
@@ -26,7 +26,7 @@ spec:
     server: {{.Values.spec.destination.server}}
   project: {{.Values.spec.destination.project}}
   source:
-    chart: sealed-secrets
-    repoURL: https://bitnami-labs.github.io/sealed-secrets
-    targetRevision: 1.13.2
-{{- end }}
+    chart: external-dns
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 5.2.2
+  {{- end }}

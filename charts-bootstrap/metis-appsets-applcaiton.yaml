@@ -13,4 +13,4 @@ spec:
   source:
     path: charts-bootstrap/metis-appsets
     repoURL: 'https://github.com/bbdsoftware/metis-cluster-bootstraps.git'
-    targetRevision: crossplane
+    targetRevision: main

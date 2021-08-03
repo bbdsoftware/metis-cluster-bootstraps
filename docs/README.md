@@ -1,6 +1,7 @@
 # Introduction
 [Documentation Site](https://bbdsoftware.github.io/metis-cluster-bootstraps/)
-Cluster bootstraps for GitOps based on argocd, see main doc site for details
+Gitops with ArgoCd based cluster boostrapping.
+
 
 # PreRequisites
 - K8 cluster eg [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)

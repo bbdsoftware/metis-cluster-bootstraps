@@ -14,3 +14,12 @@ spec:
     path: charts-bootstrap/metis-appsets
     repoURL: 'https://github.com/bbdsoftware/metis-cluster-bootstraps.git'
     targetRevision: main
+    helm:
+      parameters:
+        - name: spec.aws.iamServiceAccounts.enabled
+          value: "true"
+          forceString: false
+        - name: spec.aws.iamServiceAccounts.iamRoleArn
+          value: arn:aws:iam::xxxxxxxxx:role/metis-addons
+        - name: spec.destination.revision
+          value: main

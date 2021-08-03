@@ -9,7 +9,7 @@ spec:
     aws:
         enabled: true
         iamServiceAccounts:
-            enabled: false
+            enabled: true
             iamRoleArn: NOTPROVIDED
     destination:
         clustername: test

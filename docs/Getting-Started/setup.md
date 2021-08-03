@@ -54,9 +54,9 @@ kubectl apply -n argocd -f "https://raw.githubusercontent.com/argoproj-labs/appl
 
 
 ## 3. Install Metis Helm Char as application
-
 ```
-helm3 template charts-bootstrap/metis-appsets | kubectl apply -n argocd -f -
+kubectl apply - charts-bootstrap/metis-appsets-applcaiton.yaml -n argocd
+
 ```
 
 

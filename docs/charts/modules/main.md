@@ -1,5 +1,4 @@
 
-### Chart Structure
 
 ### **Tempaltes:**
 

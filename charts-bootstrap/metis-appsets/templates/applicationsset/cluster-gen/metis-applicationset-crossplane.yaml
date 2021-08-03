@@ -44,7 +44,7 @@ spec:
               forceString: true # ensures that value is treated as a stri
             - name: "spec.aws.iamServiceAccounts.enabled"
               value:  "{{.Values.spec.aws.iamServiceAccounts.enabled}}"
-              forceString: true # ensures that value is treated as a stri
+              forceString: false # ensures that value is treated as a stri
             - name: "spec.aws.iamServiceAccounts.iamRoleArn"
               value:  "{{.Values.spec.aws.iamServiceAccounts.iamRoleArn}}"
               forceString: true # ensures that value is treated as a stri

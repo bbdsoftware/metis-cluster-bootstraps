@@ -42,6 +42,13 @@ spec:
             - name: "spec.aws.enabled"
               value:  "{{.Values.spec.aws.enabled}}"
               forceString: true # ensures that value is treated as a stri
+            - name: "spec.aws.iamServiceAccounts.enabled"
+              value:  "{{.Values.spec.aws.iamServiceAccounts.enabled}}"
+              forceString: true # ensures that value is treated as a stri
+            - name: "spec.aws.iamServiceAccounts.iamRoleArn"
+              value:  "{{.Values.spec.aws.iamServiceAccounts.iamRoleArn}}"
+              forceString: true # ensures that value is treated as a stri
+
       destination:
         server:  "{{ printf "{{server}}" }}"
         namespace: metis-bootstrap

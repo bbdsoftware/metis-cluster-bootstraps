@@ -18,6 +18,9 @@ spec:
             enabled: true # enabled the helm chart module for storage workloads and config
     aws:
         enabled: true
+        iamServiceAccounts:
+            enabled: false
+            iamRoleArn: NOTPROVIDED
     destination:
         clustername: test
         server: https://kubernetes.default.svc # agocd registered server address

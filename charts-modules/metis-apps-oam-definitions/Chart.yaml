@@ -1,6 +1,6 @@
 apiVersion: v2
 appVersion: "1.0"
-name: metis-apps-oam-defintions
+name: metis-apps-oam-definitions
 version: 0.0.1
 maintainers:
   - name: metisbbd

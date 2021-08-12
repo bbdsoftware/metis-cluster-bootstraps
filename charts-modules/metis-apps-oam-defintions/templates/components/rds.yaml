@@ -1,0 +1,44 @@
+apiVersion: core.oam.dev/v1beta1
+kind: ComponentDefinition
+metadata:
+  name: rds
+  namespace: default
+spec:
+  workload:
+    definition:
+      apiVersion: apps/v1
+      kind: Deployment
+  schematic:
+    kube:
+      template:
+        apiVersion: aws.metis.platform.crossplane.io/v1alpha1
+        kind: PostgreSQLInstance
+        metadata:
+          name: testrds-metiis
+          namespace: default
+        spec:
+          parameters:
+            dbInstanceClass: db.t2.small
+            dbName: testingdb
+            description: " this is a test db"
+            #    engineVersion:
+            #    kmsKeyId	<string>
+            region: eu-west-1
+            storageGB: 20
+            vpcSecurityGroupIds:
+              - sg-0b5643a0d04adca72
+            subnetIds:
+              - subnet-07eeeebbdec57cb3c
+              - subnet-03b97dca50ca1d4a8
+              - subnet-05be491c8a141bb8e
+            tags:
+              - key: tests
+                value: test
+          writeConnectionSecretToRef:
+            name: example-mysqlinstance
+      parameters:
+        - name: dbname
+          required: true
+          type: string
+          fieldPaths:
+            - "spec.template.spec.containers[0].image"

@@ -1,5 +1,5 @@
 
-Metis-apps-oam
+Metis-apps-oam-defintions
 ===========
 
 This is the description
@@ -41,7 +41,7 @@ To run the linting test a util script called test.sh has been provided to run th
 
 ## Configuration
 
-The following table lists the configurable parameters of the Metis-apps-oam chart and their default values.
+The following table lists the configurable parameters of the Metis-apps-oam-defintions chart and their default values.
 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |

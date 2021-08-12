@@ -42,8 +42,6 @@ To run the linting test a util script called test.sh has been provided to run th
 - valut injector : https://www.vaultproject.io/docs/platform/k8s/injector
 - gatekeeper :https://kubernetes.io/blog/2019/08/06/opa-gatekeeper-policy-and-governance-for-kubernetes/
 
-```
-
 ## Configuration
 
 The following table lists the configurable parameters of the Metis-apps-addons chart and their default values.
@@ -60,6 +58,9 @@ The following table lists the configurable parameters of the Metis-apps-addons c
 | `spec.kubedescheduler.enabled` | install deschduler to rebalnce clsuter nodes and worklaods | `true` |
 | `spec.gatekeeper.enabled` | gatekeeper to provide for polcies and security controls | `true` |
 | `spec.kubevela.enabled` | enamble OAM model for deployment of k8 workloads | `true` |
+| `spec.sealedsecret.enabled` | enable sealed secret to store your secret safely | `true` |
+| `spec.kubernetesexternalsecret.enabled` |  | `true` |
+| `spec.externaldns.enabled` |  | `true` |
 | `spec.aws.enabled` |  | `true` |
 | `spec.destination.clustername` |  | `"test"` |
 | `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |

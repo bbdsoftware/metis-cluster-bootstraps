@@ -47,6 +47,7 @@ The following table lists the configurable parameters of the Metis-apps-monitori
 | ------------------------ | ----------------------- | -------------- |
 | `spec.kubePrometheusStack.enabled` |  | `true` |
 | `spec.prometheusBlackboxExporter.enabled` |  | `false` |
+| `spec.kubecost.enabled` |  | `true` |
 | `spec.aws.enabled` |  | `true` |
 | `spec.destination.clustername` |  | `"test"` |
 | `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |

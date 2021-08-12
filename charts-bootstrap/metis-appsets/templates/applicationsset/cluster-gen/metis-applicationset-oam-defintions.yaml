@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: metis-apps-oam-defintions
+  name: metis-apps-oam-definitions
   namespace: argocd
 spec:
   generators:

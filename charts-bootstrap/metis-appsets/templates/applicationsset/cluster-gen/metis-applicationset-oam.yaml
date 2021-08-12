@@ -10,7 +10,7 @@ spec:
   template:
     # This is a template Argo CD Application, but with support for parameter substitution.
     metadata:
-      name: "{{ printf "{{name}}" }}-metis-apps-storage"
+      name: "{{ printf "{{name}}" }}-metis-apps-oam"
     spec:
       syncPolicy:
         automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.name }}
+data:
+  policy.yml:
+    {{- toYaml .Values.config.policy | indent 2 }}

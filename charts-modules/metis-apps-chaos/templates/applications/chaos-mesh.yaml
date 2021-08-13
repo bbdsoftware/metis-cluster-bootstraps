@@ -31,7 +31,7 @@ spec:
     server: {{ .Values.spec.destination.server }}
   project: {{ .Values.spec.destination.project }}
   source:
-    chart: chaos-mesh/chaos-mesh
+    chart: chaos-mesh
     repoURL: https://charts.chaos-mesh.org
     targetRevision: v2.0.0
 {{- end }}

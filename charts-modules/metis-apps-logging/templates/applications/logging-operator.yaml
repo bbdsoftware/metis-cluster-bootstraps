@@ -29,4 +29,14 @@ spec:
     chart: logging-operator
     repoURL:  https://kubernetes-charts.banzaicloud.com
     targetRevision: 3.13.0
+    helm:
+      values: |
+        serviceAccount:
+          # Specifies whether a ServiceAccount should be created
+          create: true
+          # Annotations to add to the service account
+          annotations: {}
+          # The name of the ServiceAccount to use.
+          # If not set and create is true, a name is generated using the fullname template
+          name:
 {{- end }}

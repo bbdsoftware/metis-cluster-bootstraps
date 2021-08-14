@@ -63,7 +63,7 @@ spec:
         rbac:
           # Specifies whether rbac resources should be created
           create: true
-
+          
         podSecurityContext:
           fsGroup: 65534
 

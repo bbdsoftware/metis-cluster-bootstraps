@@ -29,4 +29,14 @@ spec:
     chart: prometheus-blackbox-exporter
     repoURL:  https://prometheus-community.github.io/helm-charts
     targetRevision: 5.0.3
+    helm:
+      values: |
+        serviceAccount:
+          # Specifies whether a ServiceAccount should be created
+          create: true
+          # Annotations to add to the service account
+          annotations: {}
+          # The name of the ServiceAccount to use.
+          # If not set and create is true, a name is generated using the fullname template
+          name:
 {{- end }}

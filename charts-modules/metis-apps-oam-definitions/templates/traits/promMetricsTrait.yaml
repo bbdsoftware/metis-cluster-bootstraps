@@ -24,7 +24,7 @@ spec:
             "metadata": {
               "labels": {
               	 for k, v in parameter.promLabels{
-              	 	"(k)": v
+              	 	"\(k)": v
               	 }
               },
               "name": context.name

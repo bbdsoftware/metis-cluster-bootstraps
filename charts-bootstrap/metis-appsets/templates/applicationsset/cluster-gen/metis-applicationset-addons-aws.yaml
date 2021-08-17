@@ -45,6 +45,10 @@ spec:
             - name: "spec.destination.revision"
               value:  "{{.Values.spec.destination.revision}}"
               forceString: true # ensures that value is treated as a stri
+            - name: "spec.aws.clusterName"
+              value:  "{{.Values.spec.aws.clusterName}}"
+              forceString: true # ensures that value is treated as a stri
+
       destination:
         server:  "{{ printf "{{server}}" }}"
         namespace: metis-bootstrap

@@ -30,6 +30,9 @@ spec:
             factor: 2 # a factor to multiply the base duration after each failed retry
             maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
       project: metis-bootstrap
+      destination:
+        server:  "{{ printf "{{server}}" }}"
+        namespace: metis-bootstrap
       source:
         repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
         targetRevision: {{.Values.spec.destination.revision}}
@@ -48,8 +51,8 @@ spec:
             - name: "spec.aws.clusterName"
               value:  "{{.Values.spec.aws.clusterName}}"
               forceString: true # ensures that value is treated as a stri
+            - name: "spec.aws.iamServiceAccounts.iamRoleArn"
+              value:  "{{.Values.spec.aws.iamServiceAccounts.iamRoleArn}}"
+              forceString: true # ensures that value is treated as a stri
 
-      destination:
-        server:  "{{ printf "{{server}}" }}"
-        namespace: metis-bootstrap
 {{- end }}

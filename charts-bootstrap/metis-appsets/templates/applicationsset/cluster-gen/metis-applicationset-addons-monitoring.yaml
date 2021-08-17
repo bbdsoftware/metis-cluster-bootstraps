@@ -45,6 +45,9 @@ spec:
             - name: "spec.destination.revision"
               value:  "{{.Values.spec.destination.revision}}"
               forceString: true # ensures that value is treated as a stri
+            - name: "spec.aws.iamServiceAccounts.iamRoleArn"
+              value:  "{{.Values.spec.aws.iamServiceAccounts.iamRoleArn}}"
+              forceString: true # ensures that value is treated as a stri
 
       destination:
         server:  "{{ printf "{{server}}" }}"

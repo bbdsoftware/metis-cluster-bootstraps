@@ -18,6 +18,7 @@ spec:
             enabled: true # enabled the helm chart module for storage workloads and config
     aws:
         enabled: true
+        clusterName: Test
         iamServiceAccounts:
             enabled: false
             iamRoleArn: NOTPROVIDED

@@ -1,15 +1,31 @@
 
+# Helm chart Moduels
 
-### **Tempaltes:**
+The cluster bootstraps are centered around the concept of a module.
+Each module is effectively a helm chart templating out a collection of argo-applications.
 
-- **Argo Applications**
+Each application is a reference to the installation and configuration of a workload , commonly a community helm chart.
+These applcaitons result int he deployment of these workloads to the cluster to provide for capabilities
 
-  This folder contains the argo applications that would be deployed as part of
-- **config**
+# Applications
+Each application in a model is retailed in terms of the common capability  they offer
 
-  This contains the project definitons  for the argo project
-  This  contains the argo defintions for the namespaces kube-addons
+Eg the **metis-apps-logging** model chart would deploy various argo applications related to logging and log collection
+  - fleuntd-cloudwatch 
+    
+      For shipping logs to cloud wathc
+    
+  - Logging-operator
+    
+      Operator to allow for the provitioning and deployment of EFK stacks
+    
+  - Promtial
+    
+      Log parser and shipper for loki log collection.
 
-- **RBAC**
+# Config
+  Each module will along with applications set up a argo project and corresponding namespace.
+  This is so that each module can be controlled and restirected using argo project settings and RBAC or OICD for example
+ 
 
-  This contains the rbac configs for the kube-addons ns
+

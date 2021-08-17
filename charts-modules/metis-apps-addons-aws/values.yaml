@@ -5,6 +5,7 @@ spec:
         enabled: true
     aws:
         enabled: true
+        clusterName: TEST
     destination:
         clustername: test
         server: https://kubernetes.default.svc # agocd registered server address

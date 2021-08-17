@@ -21,5 +21,8 @@ spec:
           forceString: false
         - name: spec.aws.iamServiceAccounts.iamRoleArn
           value: arn:aws:iam::xxxxxxxxx:role/metis-addons
+        - name: spec.aws.clusterName
+          value: mentis
         - name: spec.destination.revision
           value: main
+

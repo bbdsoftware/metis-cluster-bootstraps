@@ -41,23 +41,30 @@ nodes:
             node-labels: "role=add-ons-platform"
 
 ```
-
-## 2. Install Argocd and Applcation Set controller
-
-```
-kind delete  cluster --name metis
-kind create cluster --config kind-config.yaml
-kubectx kind-metis
-kubectl create namespace argocd
-kubectl apply -n argocd -f "https://raw.githubusercontent.com/argoproj-labs/applicationset/master/manifests/install-with-argo-cd.yaml"
-```
-
-
-## 3. Install Metis Helm Char as application
-```
-kubectl apply - charts-bootstrap/metis-appsets-applcaiton.yaml -n argocd
+## 2. Boostrap Crossplane and Providers into cluster
 
 ```
+sh charts-bootstrap/boostrap.sh
+```
+
+The above script till install crossplane and 2 metis charts
+
+- metis-crossplane-bootstrap
+  
+  This chart will install the required crossplane providers namely proviider aws , provider kubernete and provider helm
+
+- metis-crossplane-config
+
+  This chart will install the provider configs for the installe providers.
+
+
+## 3. Initiate a metis bootstrap
+```
+kubectl apply -f charts-bootstrap/boostrap.yaml
+```
+
+This will intial the bootstrap from the metis crossplan XRD that should bnow be iinstalled in the cluster in
+step 2
 
 
 

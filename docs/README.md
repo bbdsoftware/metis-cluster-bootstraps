@@ -1,6 +1,6 @@
 # Introduction
 [Documentation Site](https://bbdsoftware.github.io/metis-cluster-bootstraps/)
-Cluster bootstraps for GitOps based on argocd, see main doc site for details
+Cluster bootstraps for Crossplane GitOps based on argocd, see main doc site for details
 
 # PreRequisites
 - K8 cluster eg [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
@@ -8,7 +8,6 @@ Cluster bootstraps for GitOps based on argocd, see main doc site for details
 - Installed kubectl [krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/) package manager
 - Installed [kubectx](https://github.com/ahmetb/kubectx) power tools for kubectl
 - Installed [helm3](https://helm.sh/docs/intro/install/)
-- Installed [Argo + Argo ApplicationSets controller](https://argocd-applicationset.readthedocs.io/en/stable/Geting-Started/)
 
 # Recommend Videos and Reading
 - ArgoCD GIT Ops

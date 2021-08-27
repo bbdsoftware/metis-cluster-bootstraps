@@ -1,0 +1,6 @@
+apiVersion: gitops.metis.platform.crossplane.io/v1alpha1
+kind: Bootstrap
+metadata:
+  name: test
+spec:
+  name: test

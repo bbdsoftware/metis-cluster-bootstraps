@@ -1,0 +1,13 @@
+spec:
+  crossplane:
+    enabled: true # install crosplane controller
+  provider:
+    aws:
+      version: v0.16.0 # install aws provider version
+      serviceAccount:
+        annotations: {} # provider service annotaion
+  aws:
+    enabled: true
+    iamServiceAccounts:
+      enabled: true
+      iamRoleArn: NOTPROVIDED

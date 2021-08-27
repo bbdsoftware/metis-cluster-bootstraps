@@ -5,8 +5,9 @@ metadata:
   namespace: default
 spec:
   components:
+
     - name: spring-ref-microservice
-      type: microservice
+      type: lambnda
       properties:
         image: kanzifucius/spring-boot-k8s-example
         port: 8080

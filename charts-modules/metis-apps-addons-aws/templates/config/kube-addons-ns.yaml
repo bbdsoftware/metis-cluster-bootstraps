@@ -3,4 +3,5 @@ kind: Namespace
 metadata:
   name: {{ .Values.spec.destination.project }}
   annotations:
+
     argocd.argoproj.io/sync-wave: "-1"

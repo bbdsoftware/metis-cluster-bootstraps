@@ -9,7 +9,7 @@ nodes:
         kind: JoinConfiguration
         nodeRegistration:
           kubeletExtraArgs:
-            node-labels: "role=add-ons-platform"
+            node-labels: "role="
   - role: worker
     kubeadmConfigPatches:
       - |

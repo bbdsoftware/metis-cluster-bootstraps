@@ -1,5 +1,5 @@
 spec:
   aws:
+    version: 0.19.0
     iamServiceAccounts:
-      enabled: true
-      iamRoleArn: ''
+      iamRoleArn: "NOTPROVIDED"

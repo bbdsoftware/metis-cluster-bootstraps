@@ -2,10 +2,10 @@ apiVersion: pkg.crossplane.io/v1alpha1
 kind: ControllerConfig
 metadata:
   name: provider-aws-controller-config
-  {{- if .Values.spec.aws.iamServiceAccounts.enabled -}}
+  {{ if .Values.spec.aws.iamServiceAccounts.iamRoleArn }}
   annotations:
-    eks.amazonaws.com/role-arn: {{.Values.spec.aws.iamServiceAccounts.iamRoleArn}}
-  {{- end }}
+    eks.amazonaws.com/role-arn: {{ .Values.spec.aws.iamServiceAccounts.iamRoleArn }}
+  {{ end }}
 spec:
   podSecurityContext:
     fsGroup: 2000

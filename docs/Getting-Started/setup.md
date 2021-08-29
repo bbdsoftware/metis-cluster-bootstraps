@@ -63,8 +63,9 @@ The above script till install crossplane and 2 metis charts
 kubectl apply -f charts-bootstrap/boostrap.yaml
 ```
 
-This will intial the bootstrap from the metis crossplan XRD that should bnow be iinstalled in the cluster in
+This will intial the bootstrap from the metis crossplane XRD that should now be installed in the cluster in
 step 2
+
 
 
 

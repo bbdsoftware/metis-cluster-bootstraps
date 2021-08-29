@@ -17,9 +17,9 @@ then
     exit 0
 fi
 
-echo creating iam
+echo Creating IAM ROLE
 
-read -r -d '' TRUST_RELATIONSHIP <<EOF
+cat > trust.json  <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -39,13 +39,14 @@ read -r -d '' TRUST_RELATIONSHIP <<EOF
 }
 EOF
 
-echo "${TRUST_RELATIONSHIP}" > trust.json
+aws iam detach-role-policy --role-name $IAM_ROLE_NAME --policy-arn=arn:aws:iam::aws:policy/AdministratorAccess
+aws iam delete-role --role-name $IAM_ROLE_NAME
 aws iam create-role --role-name $IAM_ROLE_NAME --assume-role-policy-document file://trust.json --description "IAM role for provider-aws"
 aws iam attach-role-policy --role-name $IAM_ROLE_NAME --policy-arn=arn:aws:iam::aws:policy/AdministratorAccess
 rm -rf trust.json
 
 
-kubectl create namespace crossplane-system
+kubectl create namespace crossplane-system --dry-run=client -o yaml | kubectl apply -f -
 helm repo add crossplane-stable https://charts.crossplane.io/stable
 helm repo update
 helm upgrade crossplane --namespace crossplane-system crossplane-stable/crossplane --version 1.3.1 --install
@@ -56,8 +57,8 @@ kubectl  wait --for condition=established --timeout=60s crd/providers.pkg.crossp
 helm upgrade --namespace crossplane-system metis ./metis-crossplane-bootstrap --install
 
 echo "Waiting on providers installs.."
-kubectl  wait --for condition=established --timeout=60s crd/providerconfigs.helm.crossplane.io
-kubectl  wait --for condition=established --timeout=60s crd/providerconfigs.kubernetes.crossplane.io
+kubectl  wait --for condition=established --timeout=120s crd/providerconfigs.helm.crossplane.io
+kubectl  wait --for condition=established --timeout=120s crd/providerconfigs.kubernetes.crossplane.io
 helm upgrade --namespace crossplane-system metis-config ./metis-crossplane-bootstrap-config --install --set spec.aws.iamServiceAccounts.iamRoleArn=arn:aws:iam::$AWS_ACCOUNT_ID:role/$IAM_ROLE_NAME
 
 

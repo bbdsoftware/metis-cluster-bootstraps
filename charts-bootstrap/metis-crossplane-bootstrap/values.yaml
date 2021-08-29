@@ -2,4 +2,4 @@ spec:
   aws:
     iamServiceAccounts:
       enabled: true
-      iamRoleArn: NOTPROVIDED
+      iamRoleArn: ''

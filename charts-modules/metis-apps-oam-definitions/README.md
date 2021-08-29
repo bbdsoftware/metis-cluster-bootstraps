@@ -1,5 +1,5 @@
 
-Metis-apps-oam-defintions
+Metis-apps-oam-definitions
 ===========
 
 This is the description
@@ -41,11 +41,10 @@ To run the linting test a util script called test.sh has been provided to run th
 
 ## Configuration
 
-The following table lists the configurable parameters of the Metis-apps-oam-defintions chart and their default values.
+The following table lists the configurable parameters of the Metis-apps-oam-definitions chart and their default values.
 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |
-| `spec.kubevela.enabled` | install the kube-vela oma capability | `true` |
 | `spec.aws.enabled` | enabled if running in aws eks | `true` |
 | `spec.destination.clustername` |  | `"test"` |
 | `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |

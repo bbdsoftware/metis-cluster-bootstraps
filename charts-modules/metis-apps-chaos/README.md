@@ -43,15 +43,15 @@ The following table lists the configurable parameters of the Metis-apps-chaos ch
 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |
-| `spec.powerfulseal.enabled` | install pwoerfull seal controller | `true` |
+| `spec.powerfulseal.enabled` | install pwoerfulseal controller | `true` |
 | `spec.chaosMesh.enabled` | install chaos mesh | `true` |
-| `spec.aws.enabled` |  | `true` |
+| `spec.aws.enabled` | enabled if running in aws eks | `true` |
 | `spec.destination.clustername` |  | `"test"` |
-| `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |
+| `spec.destination.server` | argocd registered server address | `"https://kubernetes.default.svc"` |
 | `spec.destination.name` |  | `"test"` |
-| `spec.destination.project` | agocd project name | `"kube-apps-chaos"` |
+| `spec.destination.project` | argocd project name | `"kube-apps-chaos"` |
 | `spec.source.repoURL` |  | `"https://github.com/bbdsoftware/metis-cluster-bootstraps.git"` |
-| `spec.source.customChartPath` |  | `"charts/metis-apps-chaos/custom-charts/"` |
+| `spec.source.customChartPath` |  | `"charts-modules/metis-apps-chaos/custom-charts/"` |
 
 
 

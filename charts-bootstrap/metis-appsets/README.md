@@ -32,7 +32,8 @@ The following table lists the configurable parameters of the Metis-appsets chart
 | `spec.helmmodules.chaos.enabled` | enabled the helm chart module for choas workloads and config | `true` |
 | `spec.helmmodules.storage.enabled` | enabled the helm chart module for storage workloads and config | `true` |
 | `spec.aws.enabled` |  | `true` |
-| `spec.aws.iamServiceAccounts.enabled` |  | `false` |
+| `spec.aws.clusterName` |  | `"Test"` |
+| `spec.aws.iamServiceAccounts.enabled` |  | `true` |
 | `spec.aws.iamServiceAccounts.iamRoleArn` |  | `"NOTPROVIDED"` |
 | `spec.destination.clustername` |  | `"test"` |
 | `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |

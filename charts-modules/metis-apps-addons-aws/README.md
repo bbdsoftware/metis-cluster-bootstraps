@@ -46,6 +46,9 @@ The following table lists the configurable parameters of the Metis-apps-addons-a
 | `spec.awsNodeTerminationHandler.enabled` |  | `true` |
 | `spec.albIngressController.enabled` |  | `true` |
 | `spec.aws.enabled` |  | `true` |
+| `spec.aws.clusterName` |  | `"TEST"` |
+| `spec.aws.iamServiceAccounts.enabled` |  | `true` |
+| `spec.aws.iamServiceAccounts.iamRoleArn` |  | `"NOTPROVIDED"` |
 | `spec.destination.clustername` |  | `"test"` |
 | `spec.destination.server` | agocd registered server address | `"https://kubernetes.default.svc"` |
 | `spec.destination.name` |  | `"test"` |

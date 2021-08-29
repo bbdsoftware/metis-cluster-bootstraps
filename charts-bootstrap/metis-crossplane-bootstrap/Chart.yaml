@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+name: metis-crossplane-bootstrap-config
+version: 0.0.1
+maintainers:
+  - name: metisbbd
+    email: metisbbd@bbdsoftware.com
+description: >
+  Helm chart for the instelation of providers for crossplane required by metis config
+long_description: |
+  ## Installation
+   Add the required crossplane providers for metis

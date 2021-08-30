@@ -1,4 +1,6 @@
 spec:
+    sloth:
+        enabled: true
     kubePrometheusStack:
         enabled: true
     prometheusBlackboxExporter:
@@ -12,3 +14,6 @@ spec:
         server: https://kubernetes.default.svc # agocd registered server address
         name: test # agocd registered server name
         project: kube-apps-monitoring # agocd project name
+    source:
+        repoURL: https://github.com/bbdsoftware/metis-cluster-bootstraps.git
+        customChartPath: charts-modules/metis-apps-monitoring/custom-charts/

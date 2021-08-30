@@ -2,7 +2,7 @@ spec:
     powerfulseal:
         enabled: true # install pwoerfulseal controller
     chaosMesh:
-        enabled: true # install chaos mesh
+        enabled: false # install chaos mesh
     aws:
         enabled: true # enabled if running in aws eks
     destination:

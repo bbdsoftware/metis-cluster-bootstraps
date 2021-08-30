@@ -2,7 +2,7 @@ spec:
     vpa:
         enabled: true  # install golidlock and vpa for remocndations
     vaultInjector:
-        enabled: true # install vaaul injector for use with vault
+        enabled: false # install vaaul injector for use with vault
     reloader:
         enabled: true # install relaoder for workload restarts on config/sec changes
     reflector:

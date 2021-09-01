@@ -5,6 +5,6 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
-  package: 'registry.upbound.io/crossplane/provider-aws:{{.Values.spec.aws.version}}'
+  package: 'crossplane/provider-aws:v0.19.0'
   controllerConfigRef:
     name: provider-aws-controller-config

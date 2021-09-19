@@ -24,7 +24,7 @@ spec:
               "/": 8000
         - type: prommetrics
           properties:
-            path: "actuator/prometheus"
+            path: "management/prometheus"
             promLabels:
               "release": "kube-prometheus-stack-in-cluster"
         - type: slos

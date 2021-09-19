@@ -79,8 +79,6 @@ spec:
             totalQuery: string
             objective: *99.9  | float
 
-
-
         }
 
       

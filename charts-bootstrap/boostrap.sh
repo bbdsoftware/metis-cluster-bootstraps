@@ -1,7 +1,7 @@
 
-kubectl create namespace crossplane-system --dry-run=client -o yaml | kubectl apply -f -
-helm repo add crossplane-stable https://charts.crossplane.io/stable
-helm repo update
+#kubectl create namespace crossplane-system --dry-run=client -o yaml | kubectl apply -f -
+#helm repo add crossplane-stable https://charts.crossplane.io/stable
+#helm repo update
 helm upgrade crossplane --namespace crossplane-system crossplane-stable/crossplane --version 1.3.1 --install
 
 

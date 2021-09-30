@@ -1,5 +1,5 @@
 
-Metis-apps-oam-defintions
+Metis-apps-oam-definitions
 ===========
 
 This is the description
@@ -7,7 +7,7 @@ This is the description
 
 # APP of APPS Bootstrap for kube-oam
 
-This char contains all argo applications that would be deployed into the kube-addons namespace to provide for various
+This chart contains all argo applications that would be deployed into the kube-addons namespace to provide for various
 capabilities
 
 ## Structure
@@ -21,8 +21,8 @@ capabilities
 
 - **ArgoConfig**
 
-    This contains the project definitons  for the argo project
-    This  contains the argo defintions for the namespaces kube-addons
+    This contains the project definitions  for the argo project
+    This  contains the argo definitions for the namespaces kube-addons
 
 - **RBAC**
 
@@ -30,7 +30,7 @@ capabilities
 
 ## Development
 ### Linting
-To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
+To run the linting test a util script called helmLint.sh has been provided to run the ct tests via a docker container
 
 ## Helm Charts included as applications
  - kube-vela   : https://github.com/oam-dev/kubevela/
@@ -41,7 +41,7 @@ To run the linting test a util script called test.sh has been provided to run th
 
 ## Configuration
 
-The following table lists the configurable parameters of the Metis-apps-oam-defintions chart and their default values.
+The following table lists the configurable parameters of the Metis-apps-oam-definitions chart and their default values.
 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |

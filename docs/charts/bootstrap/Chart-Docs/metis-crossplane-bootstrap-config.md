@@ -2,11 +2,11 @@
 Metis-crossplane-bootstrap
 ===========
 
-Helm chart for the instellatiion of argo application sets that will bootrap argo applications into the cluster
+Helm chart for the installation of argo application sets that will bootstrap argo applications into the cluster
 
 
 ## Installation
-Intesations for the provider configs for the crossplane providers isntalled in the cluster
+Installation for the provider configs for the crossplane providers installed in the cluster
 Currenty the provider configs are all set to injected identies
 ## Configuration
 

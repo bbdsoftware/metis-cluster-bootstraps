@@ -2,10 +2,10 @@
 
 # Steps
 
-- Identify the module tow ich the argo application will be added
-- Create a GitHub issue    
-- Create the application manifest under the application templates for the moduel
-- Application names should be suffixed with the values clustername
+1. Identify the module to which the argo application will be added
+2. Create a GitHub issue    
+3. Create the application manifest under the application templates for the modulue
+4. Application names should be suffixed with the values clustername
 ```
   
   metadata:
@@ -14,7 +14,7 @@
 
 ```
       
-- Manifest should be wrapped in an enabled flag
+5. Manifest should be wrapped in an enabled flag
 
 ```
 {{ if .Values.spec.gatekeeper.enabled -}}
@@ -24,7 +24,7 @@ kind: Application
 {{- end }}
 ```
       
-- The argo project and namespace should be derived from the charts values
+6. The argo project and namespace should be derived from the charts values
 
 ```
     ....
@@ -35,10 +35,9 @@ kind: Application
 
     ....
 ```
-- Run Lint test
-    script aviable at test.sh
+7. Run Lint test
     
 ```
     docker run -it --rm --name ct --volume $(pwd):/data quay.io/helmpack/chart-testing:latest sh -c "ct lint --config /data/ct-local.yaml --all --debug ".
 ```
- - PR the branch with reference to the issue from step 2   
+8. PR the branch with reference to the issue from step 2   

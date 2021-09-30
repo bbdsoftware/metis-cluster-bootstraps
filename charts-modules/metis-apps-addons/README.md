@@ -2,12 +2,12 @@
 Metis-apps-addons
 ===========
 
-Helm chart for the description of
+Bootstrap for kube-oam
 
 
 # APP of APPS Bootstrap for kube-oam
 
-This char contains all argo applications that would be deployed into the kube-addons namespace to provide for various
+This chart contains all argo applications that would be deployed into the kube-addons namespace to provide various
 capabilities
 
 ## Structure
@@ -15,22 +15,22 @@ capabilities
 ### **Tempaltes:**
 
 
-- **Argo Applications**
+- **applications**
 
     This folder contains the argo applications that would be deployed as part of kube-addons bootstraps
 
-- **ArgoConfig**
+- **config**
 
-    This contains the project definitons  for the argo project
-    This  contains the argo defintions for the namespaces kube-addons
+    This contains the project definitions for the argo project
+    This contains the argo definitions for the namespaces kube-addons
 
-- **RBAC**
+  - **RBAC**
 
     This contains the rbac configs for the kube-addons ns
 
 ## Development
 ### Linting
-To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
+To run the linting test a util script called helmLint.sh has been provided to run the ct tests via a docker container
 
 ## Helm Charts included as applications
 - reloader : https://github.com/stakater/Reloader
@@ -49,7 +49,7 @@ The following table lists the configurable parameters of the Metis-apps-addons c
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |
 | `spec.vpa.enabled` | install golidlock and vpa for remocndations | `true` |
-| `spec.vaultInjector.enabled` | install vaaul injector for use with vault | `true` |
+| `spec.vaultInjector.enabled` | install vaaul injector for use with vault | `false` |
 | `spec.reloader.enabled` | install relaoder for workload restarts on config/sec changes | `true` |
 | `spec.reflector.enabled` | install refecltor to copy secrets between namespaces | `true` |
 | `spec.kubernetesExternalSecrets.enabled` | install extreanl secretes for use with vault or aws paramstore or secrets manger | `true` |

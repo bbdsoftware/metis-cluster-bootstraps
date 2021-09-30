@@ -1,6 +1,6 @@
 # Steps
 
-Utility Script [setupEnv.sh](../../../hack/setupEnv.sh)
+Utility Script [setupEnv.sh](../../hack/setupEnv.sh)
 
 ## 1. Kind
 
@@ -47,15 +47,15 @@ nodes:
 sh charts-bootstrap/boostrap.sh
 ```
 
-The above script till install crossplane and 2 metis charts
+The above script will install crossplane and 2 metis charts
 
 - metis-crossplane-bootstrap
   
-  This chart will install the required crossplane providers namely proviider aws , provider kubernete and provider helm
+  This chart will install the required [crossplane providers](https://crossplane.io/docs/v1.4/concepts/providers.html). Namely provider aws, provider kubernetes and provider helm
 
 - metis-crossplane-config
 
-  This chart will install the provider configs for the installe providers.
+  This chart will install the provider configs for the installed providers.
 
 
 ## 3. Initiate a metis bootstrap
@@ -63,7 +63,7 @@ The above script till install crossplane and 2 metis charts
 kubectl apply -f charts-bootstrap/boostrap.yaml
 ```
 
-This will intial the bootstrap from the metis crossplane XRD that should now be installed in the cluster in
+This will initialize the bootstrap from the metis crossplane XRD that should now be installed in the cluster in
 step 2
 
 

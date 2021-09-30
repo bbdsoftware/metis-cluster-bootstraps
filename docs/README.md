@@ -11,14 +11,14 @@ Cluster bootstraps for Crossplane GitOps based on argocd, see main doc site for 
 
 # Recommend Videos and Reading
 - ArgoCD GIT Ops
-    - https://www.youtube.com/watch?v=vpWQeoaiRM4
-    - https://argoproj.github.io/argo-cd/getting_started/
+    - [Argo CD - Applying GitOps Principles To Manage Production Environment In Kubernetes](https://www.youtube.com/watch?v=vpWQeoaiRM4)
+    - [Argo CD - Getting Started](https://argoproj.github.io/argo-cd/getting_started/)
 - OAM
-    - https://www.youtube.com/watch?v=2CBu6sOTtwk&t=620s
+    - [Cloud-Native Apps With Open Application Model (OAM) And KubeVela](https://www.youtube.com/watch?v=2CBu6sOTtwk)
 - Crossplane:
-  - https://www.youtube.com/watch?v=yrj4lmScKHQ
-  - https://www.youtube.com/watch?v=n8KjVmuHm7A&t=1248s
-  - https://blog.crossplane.io/why-crossplane-is-so-exciting/   
+  - [How to apply GitOps to everything - combining Argo CD and Crossplane](https://www.youtube.com/watch?v=yrj4lmScKHQ)
+  - [Crossplane - GitOps-based Infrastructure as Code through Kubernetes API](https://www.youtube.com/watch?v=n8KjVmuHm7A)
+  - [Why Crossplane Is so Exciting](https://blog.crossplane.io/why-crossplane-is-so-exciting/)   
 
 # Overview
 
@@ -29,7 +29,7 @@ targeted kubernetes clusters
 
 - When the metis app charts are installed either as manifests, or helm this will result in the creation of various argo application sets configured with cluster gen
 - These application sets mapping to the metis "chart modules" will create argo applications
-- Each application created represent a toolset,operator or workload that will be provisioned into the cluster/s provisioned for a capability
+- Each application created represents a toolset, operator or workload that will be provisioned into the cluster/s provisioned for a capability
 
 # Repo Structure
 
@@ -49,4 +49,4 @@ The metis appset chart contains a collection of argo [applicationSets](https://a
 The metis argo applications sets will generate argo applications based of the helm charts in this repo.
 
 # Contributing
-See [official documentation](http://127.0.0.1:8000/Contributing/AddingApplications/)
+See [official documentation](https://bbdsoftware.github.io/metis-cluster-bootstraps/Contributing/AddingApplications/)

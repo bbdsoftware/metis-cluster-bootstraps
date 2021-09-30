@@ -6,7 +6,7 @@ A Helm chart child for addon bootstrap
 
 # APP of APPS Bootstrap for kube-crossplane
 
-This char contains all argo applications that would be deployed into the kube-addons namespace to provide for various
+This chart contains all argo applications that would be deployed into the kube-addons namespace to provide for various
 capabilities
 
 ## Structure
@@ -20,8 +20,8 @@ capabilities
 
 - **ArgoConfig**
 
-    This contains the project definitons  for the argo project
-    This  contains the argo defintions for the namespaces kube-addons
+    This contains the project definitions  for the argo project
+    This  contains the argo definitions for the namespaces kube-addons
 
 - **RBAC**
 
@@ -29,7 +29,7 @@ capabilities
 
 ## Development
 ### Linting
-To run the linting test a util script called test.sh has been provided to run the ct tests via a docer container
+To run the linting test a util script called helmLint.sh has been provided to run the ct tests via a docker container
 
 
 

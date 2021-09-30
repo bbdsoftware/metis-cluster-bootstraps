@@ -1,4 +1,4 @@
-kind delete  cluster --name metis
+kind delete cluster --name metis
 kind create cluster --config kind-config.yaml
 kubectx kind-metis
 kubectl create namespace argocd

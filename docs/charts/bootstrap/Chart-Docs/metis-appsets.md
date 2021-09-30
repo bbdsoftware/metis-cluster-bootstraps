@@ -2,7 +2,7 @@
 Metis-appsets
 ===========
 
-Helm chart for the instellatiion of argo application sets that will bootrap argo applications into the cluster
+Helm chart for the installation of argo application sets that will bootrap argo applications into the cluster
 
 
 ## Installation
@@ -13,8 +13,8 @@ Install manifests
 ```
 
 This chart will result in argo application sets being genreated into the cluster.
-Each applicaiton set will be placed in the argocd namespace and resulst in the instealion of a a coresponfing helm "module" for
-each cluster added to argocd for mangament.
+Each applicaiton set will be placed in the argocd namespace and result in the installation of a corresponding helm "module" for
+each target cluster.
 
 See chart modules section
 ## Configuration

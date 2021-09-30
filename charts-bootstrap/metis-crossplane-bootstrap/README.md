@@ -14,8 +14,10 @@ The following table lists the configurable parameters of the Metis-crossplane-bo
 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |
+| `spec.aws.version` |  | `"0.19.0"` |
 | `spec.aws.iamServiceAccounts.enabled` |  | `true` |
-| `spec.aws.iamServiceAccounts.iamRoleArn` |  | `"NOTPROVIDED"` |
+| `spec.aws.iamServiceAccounts.roleName` |  | `null` |
+| `spec.aws.iamServiceAccounts.accountId` |  | `null` |
 
 
 

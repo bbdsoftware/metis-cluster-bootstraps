@@ -7,7 +7,7 @@ helm upgrade crossplane --namespace crossplane-system crossplane-stable/crosspla
 
 echo "Waiting on crosplane installs.."
 kubectl  wait --for condition=established --timeout=60s crd/providers.pkg.crossplane.io
-helm upgrade --namespace crossplane-system metis ./metis-crossplane-bootstrap --install
+helm upgrade --namespace crossplane-system metis ./metis-crossplane-bootstrap --install --set spec.aws.iamServiceAccounts.roleName=$IAM_ROLE_NAME --set spec.aws.iamServiceAccounts.accountId=$AWS_ACCOUNT_ID
 
 echo "Waiting on providers installs.."
 kubectl  wait --for condition=established --timeout=120s crd/providerconfigs.helm.crossplane.io
